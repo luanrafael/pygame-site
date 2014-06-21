@@ -58,11 +58,10 @@ sudo nano \__init__.py
 
 e escreva o conteudo abaixo
 
-    
     from flask import Flask
     app = Flask(__name__)
     @app.route("/")
     def hello():
-        return "Hello, I love Digital Ocean!"
-    if __name__ == "__main__":
-        app.run()
+    return "Hello, I love Digital Ocean!"   
+    if \__name__ == "__main__":
+    app.run()
