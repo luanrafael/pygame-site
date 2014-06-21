@@ -86,7 +86,7 @@ Vamos ativar com comando
    
 E agora vamos instalar o flask
 
-    sudo pip install Flask
+    sudo venv/bin/pip install Flask
     
 Se você conseguio chega ate aqui vamos testar o servidor
 
