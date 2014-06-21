@@ -40,13 +40,10 @@ dentro deste diretorio vamos criar mais 2
 
 e nossa arvore de diretorios deve esta assim:
 
-|----FlaskApp
-
-|---------FlaskApp
-
-|--------------static
-
-|--------------templates
+    |----FlaskApp
+    |---------FlaskApp
+    |--------------static
+    |--------------templates
 
 Agora vamos criar um aquivo de texto com o nome de \__init__.py
 
@@ -62,6 +59,153 @@ e escreva o conteudo abaixo
     app = Flask(__name__)
     @app.route("/")
     def hello():
-    return "Hello, I love Digital Ocean!"   
-    if \__name__ == "__main__":
-    app.run()
+        return "Ola Mundo eu Amo Python"
+    if __name__ == "__main__":
+        app.run()
+        
+Salve e feche o aquivo.
+
+Instalando o Flask
+------------------
+
+Abra novamente o terminal e digita
+
+    sudo apt-get install python-pip 
+
+Em seguida
+
+    sudo pip install virtualenv 
+
+E depois
+
+    sudo virtualenv venv
+    
+Vamos ativar com comando
+
+    source venv/bin/activate
+   
+E agora vamos instalar o flask
+
+    sudo pip install Flask
+    
+Se você conseguio chega ate aqui vamos testar o servidor
+
+    sudo python __init__.py 
+
+Se tudo ocorrer bem devera aparecer alguma mensagem parecida com isso daqui
+
+    It should display “Running on http://localhost:5000/” or "Running on http://127.0.0.1:5000/". 
+    If you see this message, you have successfully configured the app.
+    
+Agora aperte as teclas Ctrl + C para encerra o servidor e vamos configura o apache
+
+Edite o arquivo 000-default do apache que esta na pasta
+
+    /etc/apache2/sites-enable
+    
+Dexe Desta forma
+
+    <VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        #ServerName www.example.com
+        ServerName mywebsite.com
+        ServerAdmin webmaster@localhost
+        WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+        DocumentRoot /var/www
+    
+        <Directory /var/www/FlaskApp/FlaskApp/>
+            Options Indexes FollowSymLinks MultiViews ExecCGI
+            DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm index.wsgi index.py
+            AddHandler cgi-script .cgi
+            AddHandler wsgi-script .wsgi .py
+            AllowOverride All
+            Order allow,deny
+            allow from all
+        </Directory>
+        Alias /static /var/www/FlaskApp/FlaskApp/static
+    
+        <Directory /var/www/FlaskApp/FlaskApp/static/>
+                Order allow,deny
+                Allow from all
+            </Directory>
+    
+    
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+    
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+    
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+    </VirtualHost>
+    
+    # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+    
+    
+Criando o arquivo .wsgi File
+------------------------------
+
+entre na pasta
+
+    cd /var/www/FlaskApp
+    
+Usando o seu editor de texto favorito crie um aquivo com o nome de flaskapp.wsgi  no meu caso
+
+
+    sudo nano flaskapp.wsgi
+    
+E adicione o seguinte codigo no mesmo:
+
+    #!/usr/bin/python
+    import sys
+    import logging
+    logging.basicConfig(stream=sys.stderr)
+    sys.path.insert(0,"/var/www/FlaskApp/")
+    
+    from FlaskApp import app as application
+    application.secret_key = 'Add your secret key'
+    
+    
+Atento para que a arvore de diretorios fique desta forma
+
+    |--------FlaskApp
+    |----------------FlaskApp
+    |-----------------------static
+    |-----------------------templates
+    |-----------------------venv
+    |-----------------------__init__.py
+    |----------------flaskapp.wsgi
+    
+    
+
+So resta agora reiniciar o apache
+
+
+    sudo service apache2 restart
+    
+Acesso o seu site agora e veja se esta funcionando 
+
+se estiver ok a mensagem 
+    
+    Ola Mundo eu Amo Python
+    
+Devera aparecer é o sinal de que o seu servidor esta pronto para trabalhar com python
+
+
+
+
+
