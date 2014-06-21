@@ -48,11 +48,11 @@ e nossa arvore de diretorios deve esta assim:
 
 |--------------templates
 
-Agora vamos criar um aquivo de texto com o nome de \__init__.py
+Agora vamos criar um aquivo de texto com o nome de __init__.py
 
 abra o mesmo com seu editor preferido no meu caso estou usando o nano
 
-    sudo nano \__init__.py
+    sudo nano __init__.py
 
 
 e escreva o conteudo abaixo
@@ -62,5 +62,5 @@ e escreva o conteudo abaixo
     @app.route("/")
     def hello():
     return "Hello, I love Digital Ocean!"   
-    if \__name__ == "__main__":
+    if __name__ == "__main__":
     app.run()
