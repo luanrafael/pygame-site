@@ -1,0 +1,38 @@
+		
+		body{
+		    background-image: url('/static/img/dust.png');
+		}
+		.ui.inverted.segment{
+		 margin-top: 80px;
+		 height: 100px;
+		 text-align: center;
+		}
+
+		.header-image{
+		   margin-left: 400px;
+		   height: 150px;
+		}
+		.ui.stacked.segment{
+		    margin-top: 50px !important;
+		}
+		.ui.warning.message{
+		    margin-top: 50px;
+		}
+		.ui.vertical.menu{
+		    margin-left: -125px;
+		}
+		.ui.teal.submit.button{
+		    float: right;
+		}
+		.ui.two.column.grid{
+		    margin-left: 400px;
+		    margin-top: 100px;
+		}
+		.remove.circle.icon{
+		    color: red;
+		    cursor: pointer;
+		}
+		.edit.icon{
+		    color: green;
+		    cursor: pointer;
+		}

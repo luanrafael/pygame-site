@@ -1,0 +1,37 @@
+{% block head %}
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+{% endblock %}
+{% block header %}
+    <header>
+        <img class="header-image" src="/static/img/pygame_logo.gif">
+        <div class="ui inverted pointing menu">
+            <a class="item" href="/" id="home">
+                <i class="home icon"></i> Página Inicial
+            </a>
+            <a class="item" href="downloads" id="downloads">
+                <i class="download disk icon"></i> Downloads
+            </a>
+            <a class="item" href="documentacao" id="documentacao">
+                <i class="text file outline icon"></i> Documentação
+            </a>
+            <a class="item" href="/forum" id="forum">
+                <i class="chat icon"></i> Fórum
+            </a>
+            <a class="item" href="projetos" id="projetos">
+                <i class="gamepad icon"></i> Projetos
+            </a>
+        </div>
+    </header>
+{% endblock %}
+
+{% block main %}
+
+        <!-- esse bloco sempre será sobreescrevido   -->
+{% endblock %}
+
