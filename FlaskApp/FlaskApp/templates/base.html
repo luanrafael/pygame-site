@@ -1,11 +1,15 @@
+<html>
 {% block head %}
-
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
-    <link rel="stylesheet" href="/static/css/home.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
+        <link rel="stylesheet" href="/static/css/home.css">
+        <script type="text/javascript" src="/static/js/lib/angular.min.js"></script>
+        <script type="text/javascript" src="/static/js/src/app.js"></script>
+        <script type="text/javascript" src="/static/js/src/directives/loaders/loader_directive.js"></script>
+    </head>
+    <body ng-app="app">
 {% endblock %}
 {% block header %}
     <header>
@@ -14,16 +18,16 @@
             <a class="item" href="/" id="home">
                 <i class="home icon"></i> Página Inicial
             </a>
-            <a class="item" href="downloads" id="downloads">
+            <a class="item" href="/downloads" id="downloads">
                 <i class="download disk icon"></i> Downloads
             </a>
-            <a class="item" href="documentacao" id="documentacao">
+            <a class="item" href="/docs" id="documentacao">
                 <i class="text file outline icon"></i> Documentação
             </a>
             <a class="item" href="/forum" id="forum">
                 <i class="chat icon"></i> Fórum
             </a>
-            <a class="item" href="projetos" id="projetos">
+            <a class="item" href="/projetos" id="projetos">
                 <i class="gamepad icon"></i> Projetos
             </a>
         </div>
@@ -34,4 +38,5 @@
 
         <!-- esse bloco sempre será sobreescrevido   -->
 {% endblock %}
-
+    </body>
+</html>
