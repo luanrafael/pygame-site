@@ -4,10 +4,9 @@
         <meta charset="utf-8">
         <title></title>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
-        <link rel="stylesheet" href="/static/css/home.css">
+        <link rel="stylesheet" href="/static/css/common.css">
         <script type="text/javascript" src="/static/js/lib/angular.min.js"></script>
         <script type="text/javascript" src="/static/js/src/app.js"></script>
-        <script type="text/javascript" src="/static/js/src/directives/loaders/loader_directive.js"></script>
     </head>
     <body ng-app="app">
 {% endblock %}
@@ -30,6 +29,23 @@
             <a class="item" href="/projetos" id="projetos">
                 <i class="gamepad icon"></i> Projetos
             </a>
+            <div class="right menu">
+                <div class="item  login">
+                    <div class="ui icon input">
+                        <input type="text" placeholder="Nome">
+                        <i class="user icon"></i>
+                    </div>
+                </div>
+                <div class="item login">
+                    <div class="ui icon input">
+                        <input type="password" placeholder="Senha">
+                    </div>
+                </div>
+                <div class="item">
+                    <button class="ui teal button">Entrar</button>
+                </div>
+                </div>
+            </div>
         </div>
     </header>
 {% endblock %}

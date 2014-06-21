@@ -1,0 +1,11 @@
+body{
+    background-image: url('/static/img/dust.png');
+}
+.header-image{
+   margin-left: 400px;
+   height: 150px;
+}
+
+.login{
+    width: 200px;
+}
