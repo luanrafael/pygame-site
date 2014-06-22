@@ -1,33 +1,4 @@
-.ui.inverted.segment{
- margin-top: 80px;
- height: 100px;
- text-align: center;
-}
-
-.ui.stacked.segment{
-    margin-top: 50px !important;
-}
-.ui.warning.message{
-    margin-top: 50px;
-}
-.ui.vertical.menu{
-    margin-left: -125px;
-}
-.ui.teal.submit.button{
-    float: right;
-}
-.ui.two.column.grid{
-    margin-left: 400px;
-    margin-top: 100px;
-}
-.remove.circle.icon{
-    color: red;
-    cursor: pointer;
-}
-.edit.icon{
-    color: green;
-    cursor: pointer;
-}
-.ui.icon.input{
-    width: 30px;
+#panel-heading{
+    background-color: #2b3e50 !!important;
+    opacity: 0.9;
 }
