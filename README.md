@@ -1,10 +1,42 @@
 pygame-site
 ===========
 
+### Rodando localmente
 
+    git clone https://github.com/pygamebrasil/pygame-site.git
+    
+Instale o pip e virtualenv
+
+    [sudo] apt-get install python-pip && pip install virtualenv
+
+Crie um ambiente com virtualenv
+
+    cd pygame-site/FlaskApp
+    virtualenv venv
+
+Ative o ambiente
+
+    source venv/bin/activate
+    
+E instale as dependencias
+
+    venv/bin/pip install -r requirements.txt
+
+
+Rodando o servidor
+
+    python FlaskApp/__init__.py
+    
+
+Se tudo ocorrer bem devera aparecer alguma mensagem parecida com isso daqui
+
+    It should display “Running on http://localhost:5000/” or "Running on http://127.0.0.1:5000/". 
 
 CONFIGURAÇÃO DO APACHE + PYTHON + FLASK
 ----------------------------------------
+
+Esse projeto roda dentro do apache, se voce quer testar localmente dentro do apache é necessário que você siga esses passos:
+
 
 UBUNTU 14.04
 
@@ -18,85 +50,7 @@ Agora precisamos abilita o modulo novamente no terminal:
 
     sudo a2enmod wsgi
 
-Criando a Flask App
--------------------
 
-Com o terminal aberto digita
-
-    cd /var/www
-
-em seguida vamos criar o diretorio do flask
-
-    sudo mkdir FlaskApp
-
-vamos entra no diretorio que acabamos de criar
-
-    cd FlaskApp
-
-dentro deste diretorio vamos criar mais 2 
-
-    sudo mkdir static templates
-
-
-e nossa arvore de diretorios deve esta assim:
-
-    |----FlaskApp
-    |---------FlaskApp
-    |--------------static
-    |--------------templates
-
-Agora vamos criar um aquivo de texto com o nome de \__init__.py
-
-abra o mesmo com seu editor preferido no meu caso estou usando o nano
-
-
-    sudo nano \__init__.py
-
-
-e escreva o conteudo abaixo
-
-    from flask import Flask
-    app = Flask(__name__)
-    @app.route("/")
-    def hello():
-        return "Ola Mundo eu Amo Python"
-    if __name__ == "__main__":
-        app.run()
-        
-Salve e feche o aquivo.
-
-Instalando o Flask
-------------------
-
-Abra novamente o terminal e digita
-
-    sudo apt-get install python-pip 
-
-Em seguida
-
-    sudo pip install virtualenv 
-
-E depois
-
-    sudo virtualenv venv
-    
-Vamos ativar com comando
-
-    source venv/bin/activate
-   
-E agora vamos instalar o flask
-
-    sudo venv/bin/pip install Flask
-    
-Se você conseguio chega ate aqui vamos testar o servidor
-
-    sudo python __init__.py 
-
-Se tudo ocorrer bem devera aparecer alguma mensagem parecida com isso daqui
-
-    It should display “Running on http://localhost:5000/” or "Running on http://127.0.0.1:5000/". 
-    If you see this message, you have successfully configured the app.
-    
 Agora aperte as teclas Ctrl + C para encerra o servidor e vamos configura o apache
 
 Edite o arquivo 000-default do apache que esta na pasta
@@ -154,42 +108,6 @@ Dexe Desta forma
     </VirtualHost>
     
     # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-    
-    
-Criando o arquivo .wsgi File
-------------------------------
-
-entre na pasta
-
-    cd /var/www/FlaskApp
-    
-Usando o seu editor de texto favorito crie um aquivo com o nome de flaskapp.wsgi  no meu caso
-
-
-    sudo nano flaskapp.wsgi
-    
-E adicione o seguinte codigo no mesmo:
-
-    #!/usr/bin/python
-    import sys
-    import logging
-    logging.basicConfig(stream=sys.stderr)
-    sys.path.insert(0,"/var/www/FlaskApp/")
-    
-    from FlaskApp import app as application
-    application.secret_key = 'Add your secret key'
-    
-    
-Atento para que a arvore de diretorios fique desta forma
-
-    |--------FlaskApp
-    |----------------FlaskApp
-    |-----------------------static
-    |-----------------------templates
-    |-----------------------venv
-    |-----------------------__init__.py
-    |----------------flaskapp.wsgi
-    
     
 
 So resta agora reiniciar o apache
