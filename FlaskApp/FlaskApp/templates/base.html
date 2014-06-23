@@ -2,8 +2,9 @@
 {% block head %}
     <head>
         <meta charset="utf-8">
-        <title></title>
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
+        <title>Pygame Brasil</title>
+        <link rel="stylesheet" href="/static/css/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/bootstrap_fonts.min.css">
         <link rel="stylesheet" href="/static/css/common.css">
         <script type="text/javascript" src="/static/js/lib/angular.min.js"></script>
         <script type="text/javascript" src="/static/js/src/app.js"></script>
@@ -11,48 +12,71 @@
     <body ng-app="app">
 {% endblock %}
 {% block header %}
-    <header>
-        <img class="header-image" src="/static/img/pygame_logo.gif">
-        <div class="ui inverted pointing menu">
-            <a class="item" href="/" id="home">
-                <i class="home icon"></i> Página Inicial
+    <div class="alert alert-warning" style="margin-top: 40px;opacity: 0.8">
+        <h4 style="margin-left: 40%">
+            Site em construção.
+        </h4>
+        <p style="margin-left: 20%">
+            Se você desejar contribuir, acesse o projeto no github
+            <a class="alert-link" href="https://github.com/pygamebrasil/pygame-site" >
+                https://github.com/pygamebrasil/pygame-site
             </a>
-            <a class="item" href="/downloads" id="downloads">
-                <i class="download disk icon"></i> Downloads
-            </a>
-            <a class="item" href="/docs" id="documentacao">
-                <i class="text file outline icon"></i> Documentação
-            </a>
-            <a class="item" href="/forum" id="forum">
-                <i class="chat icon"></i> Fórum
-            </a>
-            <a class="item" href="/projetos" id="projetos">
-                <i class="gamepad icon"></i> Projetos
-            </a>
-            <div class="right menu">
-                <div class="item  login">
-                    <div class="ui icon input">
-                        <input type="text" placeholder="Nome">
-                        <i class="user icon"></i>
-                    </div>
-                </div>
-                <div class="item login">
-                    <div class="ui icon input">
-                        <input type="password" placeholder="Senha">
-                    </div>
-                </div>
-                <div class="item">
-                    <button class="ui teal button">Entrar</button>
-                </div>
-                </div>
+        </p>
+    </div>
+    <img src="/static/img/pygame_logo.gif" style="margin-left: 20%;margin-top: 20px">
+    <!--
+    <img class="header-image" src="/static/img/pygame_logo.gif">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+
+        <!-- Collect the nav links, forms, and other content for toggling
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>
+                <a href="/">
+                    Home
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </li>
+            <li>
+                <a href="downloads">
+                    Downloads
+                    <span class="glyphicon glyphicon-download-alt"></span>
+                </a>
+            </li>
+            <li>
+                <a href="docs">
+                    Documentação
+                    <span class="glyphicon glyphicon-book"></span>
+                </a>
+            </li>
+            <li>
+                <a href="forum">
+                    Forúm
+                    <span class="glyphicon glyphicon-comment"></span>
+                </a>
+            </li>
+            <li>
+                <a href="projetos">
+                    Projetos
+                </a>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Usuário">
+              <input type="password" class="form-control" placeholder="Senha">
             </div>
-        </div>
-    </header>
+            <button type="submit" class="btn btn-success">Logar</button>
+          </form>
+          
+        </div><!-- /.navbar-collapse
+      </div><!-- /.container-fluid
+    </nav> -->
 {% endblock %}
 
 {% block main %}
 
-        <!-- esse bloco sempre será sobreescrevido   -->
 {% endblock %}
     </body>
 </html>
