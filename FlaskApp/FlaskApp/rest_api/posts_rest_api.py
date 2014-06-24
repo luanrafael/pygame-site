@@ -1,6 +1,6 @@
 import json
-from flask import Blueprint
-from models.posts import Post
+from flask import Blueprint, jsonify
+from FlaskApp.models.post import Post
 
 
 __author__ = 'iury'
@@ -12,8 +12,7 @@ posts_api = Blueprint("posts_api", __name__)
 def get_all_posts():
     posts = Post.select()
     posts = [post.to_dict() for post in posts]
-    return json.dumps(posts)
-
+    return jsonify({'posts':posts})
 
 
 
