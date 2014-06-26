@@ -4,6 +4,15 @@ pygame-site
 ### Rodando localmente
 
     git clone https://github.com/pygamebrasil/pygame-site.git
+
+Instalando  Mysql e dependencias
+
+	sudo apt-get install mysql-server mysql-client
+	sudo apt-get install libmysqlclient-dev
+	sudo apt-get install python-dev
+
+quando você instalar ele vai te pedir uma senha, é necessário que você também coloque essa senha
+no arquivo models/db_init.py 
     
 Instale o pip e virtualenv
 

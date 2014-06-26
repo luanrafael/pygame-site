@@ -9,7 +9,7 @@ __author__ = 'iury'
 schema = "mysql"
 database = "teste"
 user = "root"
-password = "qmagico"
+password = "pygame"
 database_uri = schema + "://" + user + ":" + password + "@localhost/" + database
 
 def init_db():
