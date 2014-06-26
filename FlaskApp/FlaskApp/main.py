@@ -10,14 +10,12 @@ from views.docs import docs_views
 from views.forum import forum_views
 from views.projects import projects_views
 from views.admin import admin_views
-from models.db_init import init_db
 from rest_api import posts_rest_api
 from FlaskApp import config
     
 app = Flask(__name__)
     
 app.config.from_object(config)
-init_db()
       
 app.register_blueprint(home_views.view)
 app.register_blueprint(downloads_views.view)

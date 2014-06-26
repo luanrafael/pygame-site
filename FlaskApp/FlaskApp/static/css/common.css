@@ -7,6 +7,9 @@
 .navbar.navbar-default{
 	margin-bottom: 25px !important;
 }
+.right{
+	float: right;
+}
 body{
     background-image: url('/static/img/dust.png');
 }
