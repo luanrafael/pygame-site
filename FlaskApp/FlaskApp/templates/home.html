@@ -12,11 +12,11 @@
 	{% endblock %}
 	{% block main %}
 	<div ng-controller="homePageCtrl">
-		<ul ng-repeat="post in posts">
+		<ul ng-repeat="post in posts | orderBy:post.date">
 			<li>
 				<div class="panel panel-default">
 				  <div class="panel-heading" id="panel-heading">
-				    <h3 class="panel-title">titulo: {post.title} Autor: {post.author} data : {post.date}</h3>
+				    <h3 class="panel-title">titulo: {post.title} Autor: {post.author} data : {post.date | date}</h3>
 				  </div>
 				  <div class="panel-body">
 					<div class="media-body">

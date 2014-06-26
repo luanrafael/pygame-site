@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block head %}
+  {{super()}}
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <link href="/static/css/lib/bootstrap_admin.css" rel="stylesheet">
+  <script type="text/javascript" src="/static/js/src/services/posts_rest_api.js"></script>
+  <script type="text/javascript" src="/static/js/src/controllers/admin_controller.js"></script>
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block main %}
+<div id="wrapper" ng-controller="adminCtrl">
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Pygame Admin</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Novo post</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> User <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+      <div id="page-wrapper">
+
+        <div class="row row-post">
+          <div class="col-lg-10">
+            <input type="text" class="form-control" placeholder="Titulo" ng-model="title">
+            
+            <textarea class="form-control" rows="10" cols="130" ng-model="content"></textarea>
+            <div class="right">
+            <button type="button" class="btn btn-danger">Limpar</button>
+            <button type="button" class="btn btn-primary" ng-click="addPost()">Salvar post</button>
+            </div>
+            <p ng-show="show_success_post_message">
+              <strong>Seu post foi salvo!</strong> para visualiza-lo <a href="/" class="alert-link">clique aqui</a>.
+            </p>
+            <p ng-show="show_error_post_message" >
+              <strong>Oops!</strong> Algo deu errado.Tente novamente
+            </p>
+          </div>
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /#page-wrapper -->
+  </div><!-- /#wrapper -->
+{% endblock %}
+  </body>
+</html>
