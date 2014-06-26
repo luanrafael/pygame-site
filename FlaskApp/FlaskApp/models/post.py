@@ -20,4 +20,5 @@ class Post(ModelBase):
 
     @classmethod
     def save_post(cls, author, content, title):
-        Post(author=author, content=content, title=title)
+        post = cls(author=author, content=content, title=title)
+        return post
