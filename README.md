@@ -34,7 +34,7 @@ E instale as dependencias
 
 Rodando o servidor
 
-    python FlaskApp/__init__.py
+    python FlaskApp/main.py
     
 
 Se tudo ocorrer bem devera aparecer alguma mensagem parecida com isso daqui
