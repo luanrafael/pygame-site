@@ -1,6 +1,6 @@
 #coding: utf-8
 
-from sqlobject import  StringCol, DateTimeCol
+from sqlobject import  StringCol, DateTimeCol, IntCol
 from model_base import *
 
 class Post(ModelBase):
@@ -15,7 +15,8 @@ class Post(ModelBase):
             'author': self.author,
             'content': self.content,
             'title': self.title,
-            'date': self.date
+            'date': self.date,
+            'id': self.id
         }
 
     @classmethod
