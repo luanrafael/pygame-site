@@ -177,3 +177,16 @@ table.tablesorter thead tr th:hover {
 .alert-post{
   position: absolute;
 }
+.list-group{
+  margin-top: 20px;
+}
+.btn.btn-info.btn-sm, .btn.btn-danger.btn-sm{
+  position: absolute;
+  top: -8px;
+}
+.btn.btn-info.btn-sm{
+  right: -46px;
+}
+.btn.btn-danger.btn-sm{
+  right: -90px;
+}

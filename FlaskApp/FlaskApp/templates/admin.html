@@ -28,7 +28,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Novo post</a></li>
+            <li ng-click="changePostAction('newPost')">
+              <a href="#"><i class="fa fa-dashboard"></i> Novo post
+              </a>
+            </li>
+            <li ng-click="changePostAction('managePosts')">
+              <a href="#"><i class="fa fa-dashboard"></i> Gerenciar posts</a>
+            </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-user">
@@ -45,9 +51,10 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </nav>
-      <div id="page-wrapper">
+      <div id="page-wrapper" ng-switch on="selection" >
 
-        <div class="row row-post">
+        <!-- new post -->
+        <div class="row row-post"  ng-switch-when="newPost">
           <div class="col-lg-10">
             <input type="text" class="form-control" placeholder="Titulo" ng-model="title">
             
@@ -63,8 +70,25 @@
               <strong>Oops!</strong> Algo deu errado.Tente novamente
             </p>
           </div>
-        </div>
-      </div><!-- /.row -->
+        </div> <!-- new post end -->
+      <!-- manage posts -->
+        <div class="row row-post" ng-switch-when="managePosts">
+          <div class="col-lg-10">
+            <ul class="list-group" ng-repeat="post in posts | orderBy:post.date">
+              <li class="list-group-item">
+                <span class="left badge">{post.author}</span>
+                {post.title}  
+                <strong class="right">publicado em : {post.date | date}</strong>
+                <button type="button" class="btn btn-info btn-sm right"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button type="button" class="btn btn-danger btn-sm right"><span class="glyphicon glyphicon-remove"></span></button>
+              </li>
+
+            </ul>
+            
+          </div>
+        </div><!-- manage post end -->
+      </div>
+
     </div><!-- /#page-wrapper -->
   </div><!-- /#wrapper -->
 {% endblock %}

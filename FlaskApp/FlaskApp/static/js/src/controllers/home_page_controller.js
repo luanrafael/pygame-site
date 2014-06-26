@@ -14,7 +14,6 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 	};
 
 	var _transform_to_date = function(list){
-
 		for (var item =  0; item < list.length; item++){
 			list[item].date = new Date(Date.parse(list[item].date));
 		}
