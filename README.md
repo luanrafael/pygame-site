@@ -11,8 +11,8 @@ Instalando  Mysql e dependencias
 	sudo apt-get install libmysqlclient-dev
 	sudo apt-get install python-dev
 
-quando você instalar ele vai te pedir uma senha, é necessário que você também coloque essa senha
-no arquivo models/db_init.py 
+*quando você instalar ele vai te pedir uma senha, é necessário que você também coloque essa senha*
+*no arquivo models/db_init.py*
     
 Instale o pip e virtualenv
 
@@ -34,7 +34,7 @@ E instale as dependencias
 
 Rodando o servidor
 
-    python FlaskApp/__init__.py
+    python FlaskApp/main.py
     
 
 Se tudo ocorrer bem devera aparecer alguma mensagem parecida com isso daqui
