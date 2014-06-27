@@ -1,7 +1,6 @@
-import json
 from flask import Blueprint, jsonify, request
 from FlaskApp.models.post import Post
-from FlaskApp.models.db_init import init_db
+from FlaskApp.models.db_config import init_db
 
 __author__ = 'iury'
 
@@ -34,7 +33,8 @@ def delete_post():
 
 @posts_api.route("/edit_post", methods=["POST"])
 def edit_post():
-    params = request.json['params']
+    id = request.json.pop('id')
+    Post.edit_post(id, request.json)
     return jsonify({})
 
 

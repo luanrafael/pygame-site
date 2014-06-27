@@ -60,7 +60,8 @@
             
             <textarea class="form-control" rows="10" cols="130" ng-model="data.content"></textarea>
             <div class="right">
-            <button type="button" class="btn btn-primary" ng-click="addPost()">Salvar post</button>
+            <button type="button" class="btn btn-primary" ng-hide="data.isEditing" ng-click="addPost()">Salvar post</button>
+            <button type="button" class="btn btn-primary" ng-show="data.isEditing" ng-click="addPost(true)">Salvar post</button>
             </div>
             <p ng-show="show_success_post_message">
               <strong>Seu post foi salvo!</strong> para visualiza-lo <a href="/" class="alert-link">clique aqui</a>.

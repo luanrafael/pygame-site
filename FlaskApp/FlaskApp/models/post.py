@@ -29,9 +29,9 @@ class Post(ModelBase):
         cls.delete(id)
 
     @classmethod
-    def edit_post(cls, id, **kwargs):
+    def edit_post(cls, id, dic):
         post = cls.get(id)
 
-        for key in kwargs:
-            if key in post.to_dict():
-                setattr(post,key,kwargs[key])
+        post.author = dic['author']
+        post.content = dic['content']
+        post.title = dic['title']

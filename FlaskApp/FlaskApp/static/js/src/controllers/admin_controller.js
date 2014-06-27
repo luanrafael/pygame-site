@@ -7,6 +7,8 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 
     $scope.data = {};
     $scope.data.selection = $scope.post_actions[0];
+    $scope.data.isEditing = false;
+    $scope.data.actual_id = null;
 	$scope.$watch('data.selection', function(){
 		if ($scope.data.selection === 'managePosts'){
 			posts_rest_api.get_all_posts().success(function(result){
@@ -26,31 +28,44 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
       $scope.data.selection = 'newPost';
       $scope.data.title = post.title;
       $scope.data.content = post.content;
+      $scope.data.isEditing = true;
+      $scope.data.actual_id = post.id;
+
     };
 
     $scope.deletePost = function(id, index){
         $scope.posts.splice(index, 1);
+        $scope.posts[index].title = $scope.data.title;
         posts_rest_api.delete_post( {id:id} );
     };
 	
-	$scope.addPost = function(){
+	$scope.addPost = function(editing){
 		var data = {
 			author: "author",
 			content: $scope.data.content,
 			title: $scope.data.title
 		};
-        console.log(data);
-		posts_rest_api.add_post(data).success(function(){
-			$scope.show_success_post_message = true;
-		}).error(function(){
-			$scope.show_error_post_message = true;
-
-		});
+        if (editing){
+            data.id = $scope.data.actual_id;
+            $scope.data.isEditing = false;
+            $scope.data.actual_id = null;
+            posts_rest_api.edit_post(data);
+        }else{
+            posts_rest_api.add_post(data).success(function(){
+			    $scope.show_success_post_message = true;
+		    }).error(function(){
+			    $scope.show_error_post_message = true;
+		    });
+        }
 	};
 
 	var _transform_to_date = function(list){
 		for (var item =  0; item < list.length; item++)
 			list[item].date = new Date(Date.parse(list[item].date));
 	};
+
+    var _save_or_edit_callback = function(){
+
+    };
 
 }]);
