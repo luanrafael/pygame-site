@@ -51,16 +51,15 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </nav>
-      <div id="page-wrapper" ng-switch on="selection" >
+      <div id="page-wrapper" ng-switch on="data.selection" >
 
         <!-- new post -->
         <div class="row row-post"  ng-switch-when="newPost">
           <div class="col-lg-10">
-            <input type="text" class="form-control" placeholder="Titulo" ng-model="title">
+            <input type="text" class="form-control" placeholder="Titulo" ng-model="data.title">
             
-            <textarea class="form-control" rows="10" cols="130" ng-model="content"></textarea>
+            <textarea class="form-control" rows="10" cols="130" ng-model="data.content"></textarea>
             <div class="right">
-            <button type="button" class="btn btn-danger">Limpar</button>
             <button type="button" class="btn btn-primary" ng-click="addPost()">Salvar post</button>
             </div>
             <p ng-show="show_success_post_message">
@@ -79,8 +78,12 @@
                 <span class="left badge">{post.author}</span>
                 {post.title}  
                 <strong class="right">publicado em : {post.date | date}</strong>
-                <button type="button" class="btn btn-info btn-sm right"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-danger btn-sm right"><span class="glyphicon glyphicon-remove"></span></button>
+                <button type="button" class="btn btn-info btn-sm right" ng-click="editPost(post)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button type="button" class="btn btn-danger btn-sm right" ng-click="deletePost(post.id, $index)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
               </li>
 
             </ul>

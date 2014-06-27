@@ -1,6 +1,6 @@
 #coding: utf-8
 
-from sqlobject import  StringCol, DateTimeCol, IntCol
+from sqlobject import  StringCol, DateTimeCol
 from model_base import *
 
 class Post(ModelBase):
@@ -23,3 +23,15 @@ class Post(ModelBase):
     def save_post(cls, author, content, title):
         post = cls(author=author, content=content, title=title)
         return post
+
+    @classmethod
+    def delete_post(cls, id):
+        cls.delete(id)
+
+    @classmethod
+    def edit_post(cls, id, **kwargs):
+        post = cls.get(id)
+
+        for key in kwargs:
+            if key in post.to_dict():
+                setattr(post,key,kwargs[key])

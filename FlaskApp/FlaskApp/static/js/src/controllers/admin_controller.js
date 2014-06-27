@@ -4,10 +4,11 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 	$scope.show_error_post_message = false;
 	$scope.post_actions = ['newPost', 'managePosts'];
 	$scope.posts = [];
-	$scope.selection = $scope.post_actions[0];
 
-	$scope.$watch('selection', function(){
-		if ($scope.selection === 'managePosts'){
+    $scope.data = {};
+    $scope.data.selection = $scope.post_actions[0];
+	$scope.$watch('data.selection', function(){
+		if ($scope.data.selection === 'managePosts'){
 			posts_rest_api.get_all_posts().success(function(result){
 				$scope.posts = result.posts.reverse();
 				_transform_to_date($scope.posts);
@@ -18,15 +19,27 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 	});
 
 	$scope.changePostAction = function(action){
-		$scope.selection = action;
+		$scope.data.selection = action;
 	};
+
+    $scope.editPost = function(post){
+      $scope.data.selection = 'newPost';
+      $scope.data.title = post.title;
+      $scope.data.content = post.content;
+    };
+
+    $scope.deletePost = function(id, index){
+        $scope.posts.splice(index, 1);
+        posts_rest_api.delete_post( {id:id} );
+    };
 	
 	$scope.addPost = function(){
 		var data = {
 			author: "author",
-			content: $scope.content,
-			title: $scope.title
+			content: $scope.data.content,
+			title: $scope.data.title
 		};
+        console.log(data);
 		posts_rest_api.add_post(data).success(function(){
 			$scope.show_success_post_message = true;
 		}).error(function(){

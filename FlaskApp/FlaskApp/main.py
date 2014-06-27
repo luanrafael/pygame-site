@@ -23,7 +23,7 @@ app.register_blueprint(docs_views.view)
 app.register_blueprint(forum_views.view)
 app.register_blueprint(projects_views.view)
 app.register_blueprint(admin_views.view)
-app.register_blueprint(posts_rest_api.posts_api)
+app.register_blueprint(posts_rest_api.posts_api, url_prefix="/posts")
     
 if __name__ == "__main__":
 	app.run(debug=True)
