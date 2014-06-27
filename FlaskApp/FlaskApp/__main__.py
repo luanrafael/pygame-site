@@ -12,19 +12,17 @@ from views.projects import projects_views
 from views.admin import admin_views
 from rest_api import posts_rest_api
 from FlaskApp import config
-    
+from db_config import init_db
+
 app = Flask(__name__)
-    
 app.config.from_object(config)
-      
-app.register_blueprint(home_views.view)
-app.register_blueprint(downloads_views.view)
-app.register_blueprint(docs_views.view)
-app.register_blueprint(forum_views.view)
-app.register_blueprint(projects_views.view)
-app.register_blueprint(admin_views.view)
-app.register_blueprint(posts_rest_api.posts_api, url_prefix="/posts")
-    
+init_db()
+
+blueprints = {home_views.view, downloads_views.view, docs_views.view, forum_views.view, projects_views.view,
+              admin_views.view, posts_rest_api.posts_api}
+
+map(app.register_blueprint, blueprints)
+
 if __name__ == "__main__":
 	app.run(debug=True)
         
