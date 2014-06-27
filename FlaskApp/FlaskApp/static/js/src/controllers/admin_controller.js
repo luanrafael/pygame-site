@@ -49,7 +49,11 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
             data.id = $scope.data.actual_id;
             $scope.data.isEditing = false;
             $scope.data.actual_id = null;
-            posts_rest_api.edit_post(data);
+            posts_rest_api.edit_post(data).success(function(){
+                $scope.show_success_edit_message = true;
+            }).error(function(){
+                $scope.show_error_post_message = true;
+            });
         }else{
             posts_rest_api.add_post(data).success(function(){
 			    $scope.show_success_post_message = true;
@@ -63,9 +67,5 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 		for (var item =  0; item < list.length; item++)
 			list[item].date = new Date(Date.parse(list[item].date));
 	};
-
-    var _save_or_edit_callback = function(){
-
-    };
 
 }]);
