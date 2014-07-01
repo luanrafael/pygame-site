@@ -145,16 +145,16 @@ body {
     margin-left: 190px;
     margin-bottom: -27px;
 }
-.fade-in {
+.fade-in{
     opacity: 1;
-    transition: opacity .70s ease-in-out;
-    -moz-transition: opacity .70s ease-in-out;
-    -webkit-transition: opacity .70s ease-in-out;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
 }
 .fade-out{
     display:none;
     opacity: 0;
-    transition: opacity .100s ease-in-out;
-    -moz-transition: opacity .100s ease-in-out;
-    -webkit-transition: opacity .100s ease-in-out;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
 }

@@ -6,8 +6,12 @@ from model_base import ModelBase
 __author__ = 'iury'
 
 class User(ModelBase):
-    is_active = BoolCol()
-    is_admin = BoolCol()
+
+    class sqlmeta:
+        cacheValues = False
+
+    is_active = BoolCol(default=True)
+    is_admin = BoolCol(default=False)
     name = StringCol()
     login = StringCol()
     password = StringCol()
