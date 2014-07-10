@@ -4,6 +4,7 @@ python:
 
 before_install:
         sudo apt-get update
-install:
-        sudo pip install -r FlaskApp/requirements.txt --upgrade
+        sudo apt-get install python-dev
+#install:
+        #sudo pip install -r FlaskApp/requirements.txt --upgrade
 

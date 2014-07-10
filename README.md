@@ -1,6 +1,8 @@
 pygame-site
 ===========
 
+[](https://travis-ci.org/pygamebrasil/pygame-site.svg?branch=master/)
+
 ### Rodando localmente
 
     git clone https://github.com/pygamebrasil/pygame-site.git
