@@ -4,8 +4,11 @@
 # the instalation guide is in the Readme.md
 import sys
 import logging
+
 logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0,"/var/www/FlaskApp/")
+
+if '/var/www/FlaskApp/' not in sys.path:
+    sys.path.insert(0,"/var/www/FlaskApp/")
 
 from FlaskApp import app as application
 
