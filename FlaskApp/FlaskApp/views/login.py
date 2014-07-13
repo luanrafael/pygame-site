@@ -1,6 +1,6 @@
 #coding: utf-8
 
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from flask import Blueprint, request, render_template
 from FlaskApp.models.user import User
 __author__ = 'iury'
@@ -20,6 +20,7 @@ def login():
 
 @view.route("/signup", methods=["GET", "POST"])
 def signup():
+    return 'Desculpe ainda estamos trabalhando nisso.'
     username = request.form['name']
     password = request.form['password']
     email = request.form['email']
@@ -28,4 +29,9 @@ def signup():
 
     user = User(name=username, login=email, password=password, gender=gender)
     login_user(user)
+    return render_template('home.html')
+
+@view.route("/logout", methods=["GET"])
+def logout():
+    logout_user()
     return render_template('home.html')

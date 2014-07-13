@@ -50,4 +50,4 @@ class User(ModelBase):
 
     @classmethod
     def get_user_by_login_n_password(cls, login, password):
-        return User.selectBy(login=login, password=password)
+        return User.selectBy(login=login, password=password)[0]
