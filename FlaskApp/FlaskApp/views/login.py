@@ -1,11 +1,12 @@
 #coding: utf-8
 
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, LoginManager
 from flask import Blueprint, request, render_template
 from FlaskApp.models.user import User
 __author__ = 'iury'
 
 view = Blueprint('login', __name__)
+
 
 @view.route('/login', methods=["GET", "POST"])
 def login():
