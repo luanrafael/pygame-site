@@ -5,6 +5,7 @@
 {% block scripts %}
   {{ super() }}
   <link href="/static/css/lib/bootstrap_admin.css" rel="stylesheet">
+  <link href="/static/css/admin.css" rel="stylesheet">
   <script type="text/javascript" src="/static/js/src/services/posts_rest_api.js"></script>
   <script type="text/javascript" src="/static/js/src/controllers/admin_controller.js"></script>
 {% endblock %}
@@ -34,6 +35,9 @@
             </li>
             <li ng-click="changePostAction('managePosts')">
               <a href="#"><i class="fa fa-dashboard"></i> Gerenciar posts</a>
+            </li>
+            <li ng-click="changePostAction('manageDownloads')">
+              <a href="#"><i class="fa fa-dashboard"></i> Editar página de downloads</a>
             </li>
           </ul>
 
@@ -94,6 +98,26 @@
             
           </div>
         </div><!-- manage post end -->
+        <!-- manage downloads -->
+        <div class="row row-post"  ng-switch-when="manageDownloads">
+          <div class="col-lg-12">
+
+            <textarea class="form-control last" rows="10" cols="130" ng-model="data.downloadContent"></textarea>
+            <div class="right">
+            <button type="button" class="btn btn-primary" ng-hide="data.isEditing" ng-click="addPost()">Salvar post</button>
+            <button type="button" class="btn btn-primary" ng-show="data.isEditing" ng-click="addPost(true)">Salvar post</button>
+            </div>
+            <p ng-show="show_success_post_message">
+              <strong>Seu post foi salvo!</strong> para visualiza-lo <a href="/" class="alert-link">clique aqui</a>.
+            </p>
+            <p ng-show="show_error_post_message">
+              <strong>Oops!</strong> Algo deu errado.Tente novamente
+            </p>
+            <p ng-show="show_success_edit_message">
+              <strong>Seu post foi editado!</strong> para visualiza-lo <a href="/" class="alert-link">clique aqui</a>.
+            </p>
+          </div>
+        </div> <!-- manage downloads end -->
       </div>
 
     </div><!-- /#page-wrapper -->

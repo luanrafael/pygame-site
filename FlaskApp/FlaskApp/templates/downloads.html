@@ -7,6 +7,9 @@
 	<body>
 		{% block header %}
 			{{ super() }}
+            <div ng-bind-html-unsafe="content">
+
+            </div>
 		{% endblock %}
 		
 	</body>

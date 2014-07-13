@@ -2,11 +2,11 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 
 	$scope.show_success_post_message = false;
 	$scope.show_error_post_message = false;
-	$scope.post_actions = ['newPost', 'managePosts'];
+	$scope.actions = ['newPost', 'managePosts', 'manageDownloads'];
 	$scope.posts = [];
 
     $scope.data = {};
-    $scope.data.selection = $scope.post_actions[0];
+    $scope.data.selection = $scope.actions[0];
     $scope.data.isEditing = false;
     $scope.data.actual_id = null;
 	$scope.$watch('data.selection', function(){
