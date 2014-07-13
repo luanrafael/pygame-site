@@ -5,10 +5,11 @@
 import sys
 import logging
 
+
 logging.basicConfig(stream=sys.stderr)
 
-if '/var/www/FlaskApp/' not in sys.path:
-    sys.path.insert(0,"/var/www/FlaskApp/")
+if '/var/www/FaskApp/FlaskApp' not in sys.path:
+    sys.path.insert(0,"/var/www/FlaskApp/FlaskApp")
 
-from FlaskApp import app as application
+from FlaskApp.__main__ import app as application
 
