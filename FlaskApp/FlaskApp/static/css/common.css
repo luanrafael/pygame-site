@@ -17,3 +17,32 @@
 body{
     background-image: url('/static/img/dust.png');
 }
+
+.container-fluid{
+    background-color: #333333;
+}
+.navbar-form.navbar-right a{
+    color: white;
+}
+
+.panel.panel-default {
+    width: 95%;
+}
+.panel-heading{
+    background-color: #333333 !important;
+}
+
+.panel-title{
+    color: white;
+}
+.panel-title.right{
+    margin-top: -14px !important;
+}
+.panel-body{
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: gray;
+}
+ul {
+    list-style-type: none;
+}
