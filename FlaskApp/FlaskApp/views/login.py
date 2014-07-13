@@ -15,13 +15,16 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user = User.get_user_by_login_n_password(username, password)
+        login_user(user)
+        return render_template('home.html')
 
 @view.route("/signup", methods=["GET", "POST"])
 def signup():
     username = request.form['name']
     password = request.form['password']
     email = request.form['email']
-    gender = request.form['gender']
+
+    gender = 'Masculino' if 'male' in request.form else 'Feminino'
 
     user = User(name=username, login=email, password=password, gender=gender)
     login_user(user)
