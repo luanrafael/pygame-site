@@ -23,4 +23,3 @@ class Content(ModelBase):
     def save_data(data):
         content = Content(data=data)
         return content
-    

@@ -35,7 +35,8 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 
     $scope.deletePost = function(id, index){
         $scope.posts.splice(index, 1);
-        $scope.posts[index].title = $scope.data.title;
+        console.log($scope.posts);
+        console.log(index);
         posts_rest_api.delete_post( {id:id} );
     };
 	
