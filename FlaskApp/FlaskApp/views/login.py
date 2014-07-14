@@ -21,14 +21,13 @@ def login():
 
 @view.route("/signup", methods=["GET", "POST"])
 def signup():
-    return 'Desculpe ainda estamos trabalhando nisso.'
     username = request.form['name']
     password = request.form['password']
     email = request.form['email']
 
     gender = 'Masculino' if 'male' in request.form else 'Feminino'
 
-    user = User(name=username, login=email, password=password, gender=gender)
+    user = User(name=username, login=email, password=password, gender=gender, active=True, admin=False)
     login_user(user)
     return render_template('home.html')
 

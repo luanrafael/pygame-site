@@ -10,8 +10,8 @@ class User(ModelBase):
     class sqlmeta:
         cacheValues = False
 
-    is_active = BoolCol(default=True)
-    is_admin = BoolCol(default=False)
+    active = BoolCol(default=True)
+    admin = BoolCol(default=False)
     name = StringCol()
     login = StringCol()
     password = StringCol()
@@ -19,13 +19,13 @@ class User(ModelBase):
 
     def to_dict(self):
         return{
-            'is_admin': self.is_admin,
-            'is_active': self.is_active,
+            'is_admin': self.admin,
+            'is_active': self.active,
             'name': self.name
         }
 
     def is_active(self):
-        return self.is_active
+        return True
 
     def is_authenticated(self):
         return True
@@ -38,7 +38,7 @@ class User(ModelBase):
 
 
     def is_admin(self):
-        return self.is_admin
+        return self.admin
 
     @classmethod
     def get_all_users(cls):
