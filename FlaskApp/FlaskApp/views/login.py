@@ -1,8 +1,9 @@
 #coding: utf-8
 
-from flask_login import login_user, logout_user, LoginManager
-from flask import Blueprint, request, render_template
+from flask_login import login_user, logout_user
+from flask import Blueprint, request, redirect, render_template
 from FlaskApp.models.user import User
+
 __author__ = 'iury'
 
 view = Blueprint('login', __name__)
@@ -17,7 +18,7 @@ def login():
         password = request.form['password']
         user = User.get_user_by_login_n_password(username, password)
         login_user(user)
-        return render_template('home.html')
+        return redirect('/')
 
 @view.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -29,9 +30,9 @@ def signup():
 
     user = User(name=username, login=email, password=password, gender=gender, active=True, admin=False)
     login_user(user)
-    return render_template('home.html')
+    return redirect('/')
 
 @view.route("/logout", methods=["GET"])
 def logout():
     logout_user()
-    return render_template('home.html')
+    return redirect('/')
