@@ -14,8 +14,13 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 	};
 
 	$scope.$on("disableAllPosts", function(ngEvent, data){
-		$scope.selectedPost = data.postTitle;
-		$scope.showComments = true;
+		if (data.disable){
+			$scope.selectedPost = data.postTitle;
+			$scope.showComments = true;
+		}else{
+			$scope.selectedPost = '';
+			$scope.showComments = false;
+		}
 	});
 
 	var _transform_to_date = function(list){
