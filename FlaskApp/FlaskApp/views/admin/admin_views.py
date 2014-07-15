@@ -8,10 +8,12 @@ view = Blueprint('admin_view', __name__, template_folder='templates')
 
 @view.route('/admin')
 def home():
+	values = {}
+	if not current_user.is_authenticated():
+		return 'Voce não tem permissão para acessar essa página'
 
-    if not current_user.is_authenticated():
-        return 'Voce não tem permissão para acessar essa página'
-    return render_template("admin.html")
+	values["user"] =  current_user.name
+	return render_template("admin.html", values=values)
 
 
 

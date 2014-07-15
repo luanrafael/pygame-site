@@ -42,7 +42,7 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 	
 	$scope.addPost = function(editing){
 		var data = {
-			author: "author",
+			author: g_user,
 			content: $scope.data.content,
 			title: $scope.data.title
 		};
