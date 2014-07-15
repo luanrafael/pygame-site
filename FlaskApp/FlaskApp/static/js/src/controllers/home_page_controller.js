@@ -13,6 +13,11 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 		});
 	};
 
+	$scope.$on("disableAllPosts", function(ngEvent, data){
+		$scope.selectedPost = data.postTitle;
+		$scope.showComments = true;
+	});
+
 	var _transform_to_date = function(list){
 		for (var item =  0; item < list.length; item++){
 			list[item].date = new Date(Date.parse(list[item].date));
