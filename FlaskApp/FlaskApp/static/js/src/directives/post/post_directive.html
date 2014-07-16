@@ -1,24 +1,13 @@
-<div class="container">
-  <div class="row">
-    
-    <div class="col-md-12"> 
-      
-      <div class="panel">
-        <div class="panel-body">
-        <!--/stories-->
-  		  <div class="row">    
-              <br>
-              <div class="col-md-2 col-sm-3 text-center">
-                <a class="story-img" href>
-                  <img ng-src="{postOptions.imageUrl}" style="width:100px;height:100px" class="img-circle">
+<div class="ui stacked segment">
+  <a class="story-img" href>
+    <img ng-src="{postOptions.imageUrl}" style="width:100px;height:100px" class="img-circle">
                 </a>
-              </div>
-              <div class="col-md-10 col-sm-12">
+              <div class="title">
                 <h3>{postOptions.title}</h3>
-                <div class="row">
-                  <div class="col-xs-12">
+                </div>
+                  <div class="content">
                     <p>{postOptions.content | sliceContent } ...</p>
-                    <p class="lead">
+                    <p >
                       <button class="btn btn-success">Leia Mais</button>
                     </p>
                     <!-- nao usado por enquanto
@@ -26,26 +15,17 @@
                       <span class="label label-default">keyword</span> 
                       <span class="label label-default">tag</span> 
                       <span class="label label-default">postOptions</span>
-                    </p>
+                    </p>  
                     -->
-                    <ul class="list-inline">
+                    <ul>
                       <li>
                         postado por {postOptions.author} em :
                         <a href="#">{postOptions.date | date}</a>
                       </li>
                     </ul>
                   </div>
-                <div class="col-xs-3"></div>
-              </div>
               <br><br>
-            </div>
-          </div>
-          <hr>
             <!--
             <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
             -->
-        </div>
-      </div>
-    </div><!--/col-12-->
-  </div>
 </div>	
