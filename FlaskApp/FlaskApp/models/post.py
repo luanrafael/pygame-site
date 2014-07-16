@@ -31,24 +31,15 @@ class Post(ModelBase):
 
     @classmethod
     def save_post(cls, author, content, title):
-        '''
-        Save a post and return the post object, must call as classmethod
-        '''
         post = cls(author=author, content=content, title=title)
         return post
 
     @classmethod
     def delete_post(cls, id):
-        '''
-        delete a post of a given id, must run as classmethod
-        '''
         cls.delete(id)
 
     @classmethod
     def edit_post(cls, id, dic):
-        '''
-        Edit a post of a given id, must run as classmethod
-        '''
         post = cls.get(id)
         post.author = dic['author']
         post.content = dic['content']
