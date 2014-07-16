@@ -22,8 +22,14 @@ body{
 .container-fluid{
     background-color: #333333;
 }
+.navbar-form.navbar-right{
+  margin-top: 18px !important;  
+}
 .navbar-form.navbar-right a{
     color: white;
+}
+.navbar-form.navbar-right a:hover{
+    color: #18bc9c;
 }
 
 .panel.panel-default {

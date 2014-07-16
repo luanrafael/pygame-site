@@ -13,7 +13,12 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 		});
 	};
 
-	$scope.disableAllPosts = function(disable){
+	$window.onscroll = function(){
+		if ($window.pageYOffset > 165)
+			console.log($window.pageYOffset);
+	};
+
+	$scope.disableAllPosts = function(disable, post){
 		if (disable){
 			$scope.selectedPost = post.title;
 			$scope.showComments = true;
