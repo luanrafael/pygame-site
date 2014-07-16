@@ -14,8 +14,7 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 	};
 
 	$window.onscroll = function(){
-		if ($window.pageYOffset > 165)
-			console.log($window.pageYOffset);
+		if ($window.pageYOffset > 165){}
 	};
 
 	$scope.disableAllPosts = function(disable, post){
