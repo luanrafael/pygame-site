@@ -9,15 +9,15 @@
   		  <div class="row">    
               <br>
               <div class="col-md-2 col-sm-3 text-center">
-                <a class="story-img" href="#">
-                  <img ng-src="{options.imageUrl}" style="width:100px;height:100px" class="img-circle">
+                <a class="story-img" href>
+                  <img ng-src="{postOptions.imageUrl}" style="width:100px;height:100px" class="img-circle">
                 </a>
               </div>
               <div class="col-md-10 col-sm-12">
-                <h3>{options.title}</h3>
+                <h3>{postOptions.title}</h3>
                 <div class="row">
                   <div class="col-xs-12">
-                    <p>{options.content}</p>
+                    <p>{postOptions.content}</p>
                     <p class="lead">
                       <button class="btn btn-success">Leia Mais</button>
                     </p>
@@ -25,17 +25,13 @@
                     <p class="pull-right">
                       <span class="label label-default">keyword</span> 
                       <span class="label label-default">tag</span> 
-                      <span class="label label-default">post</span>
+                      <span class="label label-default">postOptions</span>
                     </p>
                     -->
                     <ul class="list-inline">
                       <li>
-                        Postado por {options.author} em :
-                        <a href="#">{options.date | date}</a>
-                      </li>
-                      <li>
-                        <a href ng-click="showSinglePost()"><i class="glyphicon glyphicon-comment"></i>
-                        {commentsMessage}</a>
+                        postado por {postOptions.author} em :
+                        <a href="#">{postOptions.date | date}</a>
                       </li>
                     </ul>
                   </div>

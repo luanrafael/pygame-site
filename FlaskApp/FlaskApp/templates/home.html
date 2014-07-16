@@ -7,7 +7,6 @@
 	<script type="text/javascript" src="/static/js/src/services/posts_rest_api.js"></script>
 	<script type="text/javascript" src="/static/js/src/controllers/home_page_controller.js"></script>
 	<script type="text/javascript" src="/static/js/src/directives/post/post_directive.js"></script>
-	<script type="text/javascript" src="/static/js/src/directives/post_comments/post_comments_directive.js"></script>
 {% endblock %}
 	{% block header %}
 		{{ super() }}
@@ -15,8 +14,7 @@
 	{% block main %}
 	<div ng-controller="homePageCtrl">
 		<ul ng-repeat="post in posts | orderBy:post.date | filter: selectedPost">
-			<post options="post"></post>
-			<post-comments ng-show="showComments"></post-comments>
+			<post post-options="post" disable-all-posts="disableAllPosts()"></post>
 		</ul>
 	</div>
 

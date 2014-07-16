@@ -13,15 +13,15 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 		});
 	};
 
-	$scope.$on("disableAllPosts", function(ngEvent, data){
-		if (data.disable){
-			$scope.selectedPost = data.postTitle;
+	$scope.disableAllPosts = function(disable){
+		if (disable){
+			$scope.selectedPost = post.title;
 			$scope.showComments = true;
 		}else{
 			$scope.selectedPost = '';
 			$scope.showComments = false;
 		}
-	});
+	};
 
 	var _transform_to_date = function(list){
 		for (var item =  0; item < list.length; item++){
