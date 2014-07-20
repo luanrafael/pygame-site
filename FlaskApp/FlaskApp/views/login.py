@@ -1,6 +1,6 @@
 #coding: utf-8
 
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from flask import Blueprint, request, redirect, render_template
 from FlaskApp.models.user import User
 
@@ -18,7 +18,7 @@ def login():
         password = request.form['password']
         user = User.get_user_by_login_n_password(username, password)
         login_user(user)
-        return redirect('/')
+        return redirect('/admin')
 
 @view.route("/signup", methods=["GET", "POST"])
 def signup():
