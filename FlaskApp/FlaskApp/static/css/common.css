@@ -97,7 +97,7 @@ footer {
   display:block;
 }
 
-a,a:hover {
+a:hover {
   color:#223344;
   text-decoration:none;
 }

@@ -13,6 +13,26 @@
 	top: 260px;
 	margin-left: 449px;
 }
+.post-date p{
+	float: right;
+	margin-right: -87px;
+	margin-top: -20px;
+}
 .link{
 	color: #18bc9c;
+}
+.six.wide.column{
+	float: right;
+	position: absolute;
+	top: 249px;
+	right: 16px;
+	width: 380px;
+}
+.input-group{
+	float: right;
+	width: 290px;
+}
+.categories-label{
+	margin-top: 16px;
+	margin-bottom: 9px;
 }

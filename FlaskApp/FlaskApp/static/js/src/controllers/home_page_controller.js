@@ -17,16 +17,6 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 		if ($window.pageYOffset > 165){}
 	};
 
-	$scope.disableAllPosts = function(disable, post){
-		if (disable){
-			$scope.selectedPost = post.title;
-			$scope.showComments = true;
-		}else{
-			$scope.selectedPost = '';
-			$scope.showComments = false;
-		}
-	};
-
 	var _transform_to_date = function(list){
 		for (var item =  0; item < list.length; item++){
 			list[item].date = new Date(Date.parse(list[item].date));

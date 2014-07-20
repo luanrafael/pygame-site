@@ -16,11 +16,39 @@
 	{% endblock %}
 	{% block main %}
 	<div ng-controller="homePageCtrl">
-		<ul ng-repeat="post in posts | orderBy:post.date | filter: selectedPost">
-			<post post-options="post" disable-all-posts="disableAllPosts()"></post>
+		<ul ng-repeat="post in posts | orderBy:post.date">
+			<post post-options="post" selected-post="data"></post>
 		</ul>
 	</div>
-
+	<!-- ainda nao terminado
+	<div class="six wide column">
+    	<div class="ui segment">
+    		<label>Filtrar</label>
+    		<input class="input-group">
+    		<label class="categories-label">Categorias</label>
+    		<ul class="nav nav-pills nav-stacked">
+			  <li class="active">
+			    <a href>
+			      <span class="badge pull-right">42</span>
+			      Pygame
+			    </a>
+			  </li>
+			  <li class="active">
+			    <a href >
+			      <span class="badge pull-right">42</span>
+			      PySDL
+			    </a>
+			  </li>
+			  <li class="active t">
+			    <a href>
+			      <span class="badge pull-right">42</span>
+			      PyJ2D
+			    </a>
+			  </li>
+			</ul>
+    	</div>
+  	</div>
+	-->
 	{% endblock %}
 	
 	</body>
