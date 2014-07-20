@@ -6,10 +6,10 @@
                 <h3>{postOptions.title}</h3>
                 </div>
                   <div class="content">
-                    <p>{postOptions.content | sliceContent } ...</p>
-                    <p >
-                      <button class="btn btn-success">Leia Mais</button>
+                    <p>{postOptions.content | sliceContent } ...
+                      <a class="link">Leia Mais</a>
                     </p>
+                    
                     <!-- nao usado por enquanto
                     <p class="pull-right">
                       <span class="label label-default">keyword</span> 
@@ -18,7 +18,7 @@
                     </p>  
                     -->
                     <ul>
-                      <li>
+                      <li class="post-date">
                         postado por {postOptions.author} em :
                         <a href="#">{postOptions.date | date}</a>
                       </li>

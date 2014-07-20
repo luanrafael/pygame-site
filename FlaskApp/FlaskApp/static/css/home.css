@@ -1,22 +1,18 @@
-.list-inline{
-	position: absolute;
-	bottom: -108px;
-}
-.row{
-	margin-bottom: -43px;
-}
-
 .title{
-	position: absolute;
-	top: -8px;
-	left: 156px;
+	float: left;
+	margin-top: -125px;
+	margin-left: 129px;
 }
 .content{
-	position: absolute;
-	margin-left: 140px;
-	top: 64px;
+	float: left;
+	margin-top: -56px;
+	margin-left: 129px;
 }
-.content button{
-	margin-top: 21px;
-	margin-left: -3px;
+.post-date{
+	position: absolute;
+	top: 260px;
+	margin-left: 449px;
+}
+.link{
+	color: #18bc9c;
 }
