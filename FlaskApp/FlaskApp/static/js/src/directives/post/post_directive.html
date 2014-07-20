@@ -6,10 +6,10 @@
     <h3>{postOptions.title}</h3>
   </div>
   <div class="content">
-    <p ng-show="!entirePost">{postOptions.content | sliceContent } ...
+    <p ng-show="!entirePost" ng-bind-html-unsafe="postOptions.content | sliceContent "> ...
       <a class="link" ng-click="showEntirePost()">Leia Mais</a>
     </p>
-    <p ng-show="entirePost">{postOptions.content}
+    <p ng-show="entirePost" ng-bind-html-unsafe="postOptions.content">
       <a class="link" ng-show="!entirePost">Leia Mais</a>
     </p>
     <ul>
