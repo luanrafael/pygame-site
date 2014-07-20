@@ -1,4 +1,4 @@
-'''
+"""
 Module containing all rest apis
 Each rest api must be register in the __main__ file with the method register_blueprint
 the rest api must follow this base structure
@@ -20,7 +20,7 @@ url_prefix is the common url for all routes in the file
 endpoint is a suggestive for the operation that the function does
 
 each function must have a suggestive name and  must return a json, using the function jsonify
-'''
+"""
 
 __author__ = 'iury'
 

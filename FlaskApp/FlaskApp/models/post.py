@@ -5,12 +5,13 @@ from model_base import *
 
 __author__ = 'iury'
 
+
 class Post(ModelBase):
-    '''
+    """
     Class for store posts
     To create a new Post object just call Post(author=author, content=content, title=title)
     you don't need to pass the field date, it is create automatically
-    '''
+    """
     author = StringCol()
     content = StringCol()
     title = StringCol()
@@ -18,9 +19,9 @@ class Post(ModelBase):
     
 
     def to_dict(self):
-        '''
+        """
         return a dict of the fields in the class plus the id field, which is a unique field for each object
-        '''
+        """
         return {
             'author': self.author,
             'content': self.content,

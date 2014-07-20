@@ -7,10 +7,10 @@ if PROJECT_PATH not in sys.path:
 from flask import Flask
 from flask_login import LoginManager
 from views import home_views, downloads_views, login
-from views.docs import docs_views
-from views.forum import forum_views
-from views.projects import projects_views
-from views.admin import admin_views
+from views import docs_views
+from views import forum_views
+from views import projects_views
+from views import admin_views
 from rest_api import posts_rest_api
 from FlaskApp import config
 from db_config import init_db
