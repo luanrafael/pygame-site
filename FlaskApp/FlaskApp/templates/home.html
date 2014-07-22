@@ -24,23 +24,23 @@
 		<div class="six wide column">
 	    	<div class="ui segment">
 	    		<label>Filtrar</label>
-	    		<input class="input-group" ng-model="search">
+	    		<input class="form-control" ng-model="search">
 	    		<label class="categories-label">Categorias</label>
 	    		<ul class="nav nav-pills nav-stacked ">
-				  <li ng-click="setCategorie('pygame')" class="selected">
-				    <a href id="pygame" ng-mouseover="changeTextColor('pygame', '#18bc9c')" ng-mouseleave="changeTextColor('pygame', 'white')">
+				  <li>
+				    <a name="tag" id="pygame" ng-click="setCategorie('pygame')">
 				      <span class="badge pull-right">{posts_per_categorie.pygame}</span>
 				      Pygame
 				    </a>
 				  </li>
-				  <li ng-click="setCategorie('pysdl')">
-				    <a href id="pysdl" ng-mouseover="changeTextColor('pysdl', '#18bc9c')" ng-mouseleave="changeTextColor('pysdl', 'white')">
+				  <li >
+				    <a id="pysdl"name="tag" ng-click="setCategorie('pysdl')">
 				      <span class="badge pull-right">{posts_per_categorie.pysdl}</span>
 				      PySDL
 				    </a>
 				  </li>
-				  <li ng-click="setCategorie('pyj2d')">
-				    <a href id="pyj2d" ng-mouseover="changeTextColor('pyj2d', '#18bc9c')" ng-mouseleave="changeTextColor('pyj2d', 'white')">
+				  <li >
+				    <a id="pyj2d" name="tag" ng-click="setCategorie('pyj2d')">
 				      <span class="badge pull-right">{posts_per_categorie.pyj2d}</span>
 				      PyJ2D
 				    </a>

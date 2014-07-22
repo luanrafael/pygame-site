@@ -18,13 +18,18 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 	$window.onscroll = function(){
 		if ($window.pageYOffset > 165){}
 	};
-	$scope.changeTextColor = function(id, color){
-		var element = document.getElementById(id);
-		element.style.color = color;
-	};
 
 	$scope.setCategorie = function(categorie){
 		$scope.categorie = categorie;
+		var elements = document.getElementsByName('tag')
+		for (var element in elements){
+			if (elements[element].id === categorie)
+				elements[element].style.color = '#18bc9c';
+			else
+				elements[element].style.color = 'white';
+		}
+		
+
 	};
 
 	var _transform_to_date = function(list){
