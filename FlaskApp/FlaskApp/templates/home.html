@@ -15,38 +15,40 @@
 		{{ super() }}
 	{% endblock %}
 	{% block main %}
-	<div ng-controller="homePageCtrl">
-		<ul ng-repeat="post in posts | orderBy:post.date">
-			<post post-options="post" selected-post="data"></post>
-		</ul>
-	</div>
-	<div class="six wide column">
-    	<div class="ui segment">
-    		<label>Filtrar</label>
-    		<input class="input-group">
-    		<label class="categories-label">Categorias</label>
-    		<ul class="nav nav-pills nav-stacked">
-			  <li class="active">
-			    <a href>
-			      <span class="badge pull-right">42</span>
-			      Pygame
-			    </a>
-			  </li>
-			  <li class="active">
-			    <a href >
-			      <span class="badge pull-right">42</span>
-			      PySDL
-			    </a>
-			  </li>
-			  <li class="active t">
-			    <a href>
-			      <span class="badge pull-right">42</span>
-			      PyJ2D
-			    </a>
-			  </li>
+	<div ng-controller="homePageCtrl"> 
+		<div>
+			<ul ng-repeat="post in posts | orderBy:post.date | filter: categorie | filter: search">
+				<post post-options="post" selected-post="data"></post>
 			</ul>
-    	</div>
-  	</div>
+		</div>
+		<div class="six wide column">
+	    	<div class="ui segment">
+	    		<label>Filtrar</label>
+	    		<input class="input-group" ng-model="search">
+	    		<label class="categories-label">Categorias</label>
+	    		<ul class="nav nav-pills nav-stacked ">
+				  <li ng-click="setCategorie('pygame')" class="selected">
+				    <a href id="pygame" ng-mouseover="changeTextColor('pygame', '#18bc9c')" ng-mouseleave="changeTextColor('pygame', 'white')">
+				      <span class="badge pull-right">{posts_per_categorie.pygame}</span>
+				      Pygame
+				    </a>
+				  </li>
+				  <li ng-click="setCategorie('pysdl')">
+				    <a href id="pysdl" ng-mouseover="changeTextColor('pysdl', '#18bc9c')" ng-mouseleave="changeTextColor('pysdl', 'white')">
+				      <span class="badge pull-right">{posts_per_categorie.pysdl}</span>
+				      PySDL
+				    </a>
+				  </li>
+				  <li ng-click="setCategorie('pyj2d')">
+				    <a href id="pyj2d" ng-mouseover="changeTextColor('pyj2d', '#18bc9c')" ng-mouseleave="changeTextColor('pyj2d', 'white')">
+				      <span class="badge pull-right">{posts_per_categorie.pyj2d}</span>
+				      PyJ2D
+				    </a>
+				  </li>
+				</ul>
+	    	</div>
+	  	</div>
+	 </div>
 	{% endblock %}
 	
 	</body>
