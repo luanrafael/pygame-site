@@ -17,8 +17,9 @@ def add_post():
     author = request.json['author']
     content = request.json['content']
     title = request.json['title']
+    categorie = request.json['categorie']
 
-    Post.save_post(author, content, title)
+    Post.save_post(author, content, title, categorie)
     return jsonify(request.json)
 
 

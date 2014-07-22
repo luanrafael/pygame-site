@@ -7,6 +7,7 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 
     $scope.data = {};
     $scope.data.selection = $scope.actions[0];
+    $scope.data.categorie = 'pygame';
     $scope.data.isEditing = false;
     $scope.data.actual_id = null;
 	$scope.$watch('data.selection', function(){
@@ -35,8 +36,6 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 
     $scope.deletePost = function(id, index){
         $scope.posts.splice(index, 1);
-        console.log($scope.posts);
-        console.log(index);
         posts_rest_api.delete_post( {id:id} );
     };
 	
@@ -44,8 +43,10 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 		var data = {
 			author: g_user,
 			content: $scope.data.content,
-			title: $scope.data.title
+			title: $scope.data.title,
+			categorie: $scope.data.categorie
 		};
+
         if (editing){
             data.id = $scope.data.actual_id;
             $scope.data.isEditing = false;
@@ -62,11 +63,19 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 			    $scope.show_error_post_message = true;
 		    });
         }
+        _clear_fields('categorie', 'title', 'content');
 	};
 
 	var _transform_to_date = function(list){
 		for (var item =  0; item < list.length; item++)
 			list[item].date = new Date(Date.parse(list[item].date));
+	};
+
+	var _clear_fields = function(){
+		for (arg in arguments){
+			attr = arguments[arg];
+			$scope.data[attr] = '';
+		}
 	};
 
 }]);

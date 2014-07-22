@@ -16,6 +16,7 @@ class Post(ModelBase):
     content = StringCol()
     title = StringCol()
     date = DateTimeCol(default=DateTimeCol.now)
+    categorie = StringCol(default=None)
     
 
     def to_dict(self):
@@ -23,6 +24,7 @@ class Post(ModelBase):
         return a dict of the fields in the class plus the id field, which is a unique field for each object
         """
         return {
+            'categorie': self.categorie,
             'author': self.author,
             'content': self.content,
             'title': self.title,
@@ -31,8 +33,8 @@ class Post(ModelBase):
         }
 
     @classmethod
-    def save_post(cls, author, content, title):
-        post = cls(author=author, content=content, title=title)
+    def save_post(cls, author, content, title, categorie):
+        post = cls(author=author, content=content, title=title, categorie=categorie)
         return post
 
     @classmethod
@@ -45,3 +47,4 @@ class Post(ModelBase):
         post.author = dic['author']
         post.content = dic['content']
         post.title = dic['title']
+        post.categorie = dic['categorie']
