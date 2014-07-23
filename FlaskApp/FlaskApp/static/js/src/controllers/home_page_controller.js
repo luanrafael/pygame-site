@@ -4,10 +4,16 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 
 	$scope.posts = [];
 	$scope.posts_per_categorie = {'pygame': 0, 'pysdl': 0, 'pyj2d': 0};
+	$scope.post_pages = [];
 
 	$window.onload = function(){
-		posts_rest_api.get_all_posts().success(function(result){
+		data = {
+			'start': 0,
+			'end': 10
+		};
+		posts_rest_api.get_all_posts(data).success(function(result){
 			$scope.posts = result.posts.reverse();
+			_split_posts_pages(result.quant);
 			_transform_to_date($scope.posts);
 			_count_post_categories();
 		}).error(function(err){
@@ -44,4 +50,9 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 				$scope.posts_per_categorie[attr.toLowerCase()] ++;
 		}
 	};
+	var _split_posts_pages = function(quant){
+		range = (quant / 10) + 1;
+		for(var i = 0; i < range; i++)
+			$scope.post_pages.push(i);
+	}
 }]);

@@ -24,7 +24,7 @@
 		<div class="six wide column">
 	    	<div class="ui segment">
 	    		<label>Filtrar</label>
-	    		<input class="form-control" ng-model="search">
+	    		<input class="form-control" ng-model="search" placeholder="nome, autor ou qualquer outra palavra">
 	    		<label class="categories-label">Categorias</label>
 	    		<ul class="nav nav-pills nav-stacked ">
 				  <li>
@@ -48,6 +48,11 @@
 				</ul>
 	    	</div>
 	  	</div>
+	 	<ul class="pagination pagination-md">
+	 	<li  ng-repeat="page in post_pages">
+	 		<a>{page}</a>
+	 	</li>
+	 	</ul>
 	 </div>
 	{% endblock %}
 	

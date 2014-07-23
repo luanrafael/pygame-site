@@ -5,11 +5,13 @@ __author__ = 'iury'
 
 posts_api = Blueprint("posts_api", __name__)
 
-@posts_api.route("/posts/get_all_posts", methods=["GET"])
+@posts_api.route("/posts/get_all_posts", methods=["post"])
 def get_all_posts():
-    posts = Post.select()
+    start = request.json['start']
+    end = request.json['end']
+    posts = Post.select()[start:end]
     posts = [post.to_dict() for post in posts]
-    return jsonify({'posts': posts})
+    return jsonify({'posts': posts, 'quant': len(posts)})
 
 
 @posts_api.route("/posts/add_post", methods=["POST"])

@@ -8,8 +8,8 @@ app.factory("posts_rest_api", ['$http', function($http){
     var delete_post_url = endpoint + '/delete_post';
     var edit_post_url = endpoint + '/edit_post';
 
-	var get_all_posts = function(){
-		return $http.get(get_all_posts_url);
+	var get_all_posts = function(data){
+		return $http.post(get_all_posts_url, data);
 	};
 
 	var add_post = function(data){
