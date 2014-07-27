@@ -7,14 +7,13 @@ posts_api = Blueprint("posts_api", __name__)
 
 @posts_api.route("/posts/get_all_posts", methods=["GET"])
 def get_all_posts():
-    selected_posts = Post.select()
     posts = []
     ind = 1
-    for post in selected_posts:
+    for post in Post.select().orderBy('date'):
         post_dict = post.to_dict()
         post_dict['ind'] = ind
         ind +=1
-        
+
         posts.append(post_dict)
         if ind == 5:
             ind = 1
