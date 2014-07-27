@@ -1,9 +1,7 @@
-import sys, os
+from init_app import *
 
-PROJECT_PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-2])
-if PROJECT_PATH not in sys.path:
-    sys.path.insert(0,PROJECT_PATH)
-    
+put_project_in_path()
+
 from flask import Flask
 from flask_login import LoginManager
 from views import home_views, downloads_views, login
@@ -20,7 +18,8 @@ from FlaskApp.models.user import User
 
 app = Flask(__name__)
 app.config.from_object(config)
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.secret_key = get_secret_key()
+	
 
 init_db()
 
