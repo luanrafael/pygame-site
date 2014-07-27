@@ -1,28 +1,20 @@
 	
 
-app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function($scope, $window, posts_rest_api){
+app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_api', function($scope, $rootScope, $window, posts_rest_api){
 
 	$scope.posts = [];
+	$scope.filterPage = "1";
 	$scope.posts_per_categorie = {'pygame': 0, 'pysdl': 0, 'pyj2d': 0};
-	$scope.post_pages = [];
+	$scope.data = {};
+	$scope.data.post_pages = [];
 
 	$window.onload = function(){
-		data = {
-			'start': 0,
-			'end': 10
-		};
-		posts_rest_api.get_all_posts(data).success(function(result){
-			$scope.posts = result.posts.reverse();
-			_split_posts_pages(result.quant);
-			_transform_to_date($scope.posts);
-			_count_post_categories();
-		}).error(function(err){
-			console.log(err);
-		});
+		$scope.isLoading = true;
+		_get_posts();
 	};
 
 	$window.onscroll = function(){
-		if ($window.pageYOffset > 165){}
+		if ($window.pageYOffset > 165){} // TODO: terminar de implementar
 	};
 
 	$scope.setCategorie = function(categorie){
@@ -36,6 +28,18 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 		}
 		
 
+	};
+
+	var _get_posts = function(){
+		posts_rest_api.get_all_posts().success(function(result){
+			$scope.isLoading = false;
+			$scope.posts = result.posts.reverse();
+			_split_posts_pages(result.quant);
+			_transform_to_date($scope.posts);
+			_count_post_categories();
+		}).error(function(err){
+			console.log(err);
+		});
 	};
 
 	var _transform_to_date = function(list){
@@ -52,7 +56,10 @@ app.controller('homePageCtrl', ['$scope', '$window', 'posts_rest_api', function(
 	};
 	var _split_posts_pages = function(quant){
 		range = (quant / 10) + 1;
-		for(var i = 0; i < range; i++)
-			$scope.post_pages.push(i);
+		for(var i = 0; i < range; i++){
+			$scope.data.post_pages.push(i);
+		}
+
+		$rootScope.$broadcast("post_pages_event", $scope.data);
 	}
 }]);

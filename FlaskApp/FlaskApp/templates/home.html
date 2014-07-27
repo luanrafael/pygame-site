@@ -9,6 +9,8 @@
 	<script type="text/javascript" src="/static/js/src/services/posts_rest_api.js"></script>
 	<script type="text/javascript" src="/static/js/src/controllers/home_page_controller.js"></script>
 	<script type="text/javascript" src="/static/js/src/directives/post/post_directive.js"></script>
+	<script type="text/javascript" src="/static/js/src/directives/pagination/pagination_directive.js"></script>
+	<script type="text/javascript" src="/static/js/src/directives/loaders/loader_directive.js"></script>
 	<script type="text/javascript" src="/static/js/src/filters/filters.js"></script>
 {% endblock %}
 	{% block header %}
@@ -16,9 +18,11 @@
 	{% endblock %}
 	{% block main %}
 	<div ng-controller="homePageCtrl"> 
-		<div>
+		<loader ng-show="isLoading"></loader>
+		<div ng-show="!isLoading">
 			<ul ng-repeat="post in posts | orderBy:post.date | filter: categorie | filter: search">
-				<post post-options="post" selected-post="data"></post>
+				<div ng-show="post.ind == filterPage">{post.ind}</div>
+				<post post-options="post" selected-post="data" show-post="post.ind == filterPage"></post>
 			</ul>
 		</div>
 		<div class="six wide column">
@@ -48,7 +52,7 @@
 				</ul>
 	    	</div>
 	  	</div>
-	 	<pagination post-pages="post_pages"></pagination>
+	 	<pagination filter-page="filterPage" more-posts="requestMorePosts()"></pagination>
 	 </div>
 	{% endblock %}
 	

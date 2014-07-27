@@ -5,12 +5,22 @@ __author__ = 'iury'
 
 posts_api = Blueprint("posts_api", __name__)
 
-@posts_api.route("/posts/get_all_posts", methods=["post"])
+@posts_api.route("/posts/get_all_posts", methods=["GET"])
 def get_all_posts():
-    start = request.json['start']
-    end = request.json['end']
-    posts = Post.select()[start:end]
-    posts = [post.to_dict() for post in posts]
+    selected_posts = Post.select()
+    posts = []
+    ind = 1
+    for post in selected_posts:
+        post_dict = post.to_dict()
+        post_dict['ind'] = ind
+        ind +=1
+        
+        posts.append(post_dict)
+        if ind == 5:
+            ind = 1
+
+
+
     return jsonify({'posts': posts, 'quant': len(posts)})
 
 
