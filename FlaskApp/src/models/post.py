@@ -42,12 +42,15 @@ class Post(ModelBase):
 
     @classmethod
     def delete_post(cls, id):
+        """
+        TODO: retornar o status da operacao
+        """
         cls.delete(id)
 
     @classmethod
-    def edit_post(cls, id, dic):
+    def edit_post(cls, id, **kwargs):
         post = cls.get(id)
-        post.author = dic['author']
-        post.content = dic['content']
-        post.title = dic['title']
-        post.categorie = dic['categorie']
+        post.author = kwargs['author']
+        post.content = kwargs['content']
+        post.title = kwargs['title']
+        post.categorie = kwargs['categorie']
