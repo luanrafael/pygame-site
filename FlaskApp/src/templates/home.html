@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block head %}
+	{{super()}}
+{% endblock %}
+{% block scripts %}
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="/static/css/segment.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/home.css">
+	<script type="text/javascript" src="/static/js/src/services/posts_rest_api.js"></script>
+	<script type="text/javascript" src="/static/js/src/controllers/home_page_controller.js"></script>
+	<script type="text/javascript" src="/static/js/src/directives/post/post_directive.js"></script>
+	<script type="text/javascript" src="/static/js/src/directives/pagination/pagination_directive.js"></script>
+	<script type="text/javascript" src="/static/js/src/directives/loaders/loader_directive.js"></script>
+	<script type="text/javascript" src="/static/js/src/filters/filters.js"></script>
+{% endblock %}
+	{% block header %}
+		{{ super() }}
+	{% endblock %}
+	{% block main %}
+	<div ng-controller="homePageCtrl"> 
+		<loader ng-show="isLoading"></loader>
+		<div ng-show="!isLoading">
+			<ul ng-repeat="post in posts | orderBy:post.date | filter: categorie | filter: search">
+				<div ng-show="post.ind == filterPage">{post.ind}</div>
+				<post post-options="post" selected-post="data" show-post="post.ind == filterPage"></post>
+			</ul>
+		</div>
+		<div class="six wide column">
+	    	<div class="ui segment">
+	    		<label>Filtrar</label>
+	    		<input class="form-control" ng-model="search" placeholder="nome, autor ou qualquer outra palavra">
+	    		<label class="categories-label">Categorias</label>
+	    		<ul class="nav nav-pills nav-stacked ">
+				  <li>
+				    <a name="tag" id="pygame" ng-click="setCategorie('pygame')">
+				      <span class="badge pull-right">{posts_per_categorie.pygame}</span>
+				      Pygame
+				    </a>
+				  </li>
+				  <li >
+				    <a id="pysdl"name="tag" ng-click="setCategorie('pysdl')">
+				      <span class="badge pull-right">{posts_per_categorie.pysdl}</span>
+				      PySDL
+				    </a>
+				  </li>
+				  <li >
+				    <a id="pyj2d" name="tag" ng-click="setCategorie('pyj2d')">
+				      <span class="badge pull-right">{posts_per_categorie.pyj2d}</span>
+				      PyJ2D
+				    </a>
+				  </li>
+				</ul>
+	    	</div>
+	  	</div>
+	 	<pagination filter-page="filterPage" more-posts="requestMorePosts()"></pagination>
+	 </div>
+	{% endblock %}
+	
+	</body>
+</html>

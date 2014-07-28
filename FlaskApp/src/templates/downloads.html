@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+<html>
+	<head>
+        <link rel="stylesheet" href="/static/css/home.css">
+	</head>
+	<body>
+		{% block header %}
+			{{ super() }}
+            <div ng-bind-html-unsafe="content">
+
+            </div>
+		{% endblock %}
+		
+	</body>
+</html>
