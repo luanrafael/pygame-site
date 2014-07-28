@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 
 from sqlobject import StringCol
 from model_base import ModelBase
@@ -17,7 +17,7 @@ class Content(ModelBase):
 
     @property
     def get_data(type):
-        return  Content.selectBy(type=type)
+        return Content.selectBy(type=type)
 
     @property.setter
     def save_data(data):

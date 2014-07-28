@@ -1,8 +1,5 @@
-#coding: utf-8
+# coding: utf-8
 
-from models.content import Content
+# from models.content import Content
 
 __author__ = 'iury'
-
-
-

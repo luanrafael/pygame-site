@@ -1,9 +1,10 @@
-#coding: utf-8
+# coding: utf-8
 
 from sqlobject import BoolCol, StringCol
 from model_base import ModelBase
 
 __author__ = 'iury'
+
 
 class User(ModelBase):
 
@@ -35,7 +36,6 @@ class User(ModelBase):
 
     def get_id(self):
         return self.id
-
 
     def is_admin(self):
         return self.admin

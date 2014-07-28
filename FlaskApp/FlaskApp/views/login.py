@@ -1,6 +1,6 @@
-#coding: utf-8
+# coding: utf-8
 
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user
 from flask import Blueprint, request, redirect, render_template
 from FlaskApp.models.user import User
 
@@ -20,6 +20,7 @@ def login():
         login_user(user)
         return redirect('/admin')
 
+
 @view.route("/signup", methods=["GET", "POST"])
 def signup():
     username = request.form['name']
@@ -28,9 +29,11 @@ def signup():
 
     gender = 'Masculino' if 'male' in request.form else 'Feminino'
 
-    user = User(name=username, login=email, password=password, gender=gender, active=True, admin=False)
+    user = User(name=username, login=email, password=password,
+                gender=gender, active=True, admin=False)
     login_user(user)
     return redirect('/')
+
 
 @view.route("/logout", methods=["GET"])
 def logout():
