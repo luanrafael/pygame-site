@@ -14,7 +14,8 @@ from FlaskApp import config
 from db_config import init_db
 from FlaskApp.models.user import User
 
-#initialing the application
+# Configuring the application
+
 app = Flask(__name__)
 app.config.from_object(config)
 app.secret_key = get_secret_key()
@@ -36,4 +37,4 @@ blueprints = [
 map(app.register_blueprint, blueprints)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=False)

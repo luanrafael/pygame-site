@@ -15,11 +15,9 @@ class Content(ModelBase):
     data = StringCol()
     type = StringCol()
 
-    @property
     def get_data(type):
         return Content.selectBy(type=type)
 
-    @property.setter
     def save_data(data):
         content = Content(data=data)
         return content
