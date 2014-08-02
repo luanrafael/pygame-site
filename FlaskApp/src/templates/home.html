@@ -21,7 +21,6 @@
 		<loader ng-show="isLoading"></loader>
 		<div ng-show="!isLoading">
 			<ul ng-repeat="post in posts | orderBy:post.date | filter: categorie | filter: search">
-				<div ng-show="post.ind == filterPage">{post.ind}</div>
 				<post post-options="post" selected-post="data" show-post="post.ind == filterPage"></post>
 			</ul>
 		</div>

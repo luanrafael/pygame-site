@@ -11,15 +11,17 @@ def get_all_posts():
     Return all posts
     """
     posts = []
+    _max = 0
     ind = 1
     for post in Post.select().orderBy('date'):
         post_dict = post.to_dict()
         post_dict['ind'] = ind
-        ind += 1
+        _max += 1
 
         posts.append(post_dict)
-        if ind == 5:
-            ind = 1
+        if _max == 5:
+            _max = 0
+            ind += 1
     return posts
 
 def get_post_by_id(id):
