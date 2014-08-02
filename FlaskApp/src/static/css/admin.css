@@ -1,5 +1,6 @@
 .col-lg-10{
 	margin-left: -75px;
+	margin-top: -62px;
 }
 
 .form-control.last{
@@ -16,4 +17,7 @@
 	position: absolute;
 	color: #222222;
 	font-size: 18px;
+}
+.form-control{
+	margin-bottom: 15px;
 }

@@ -6,6 +6,10 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
 	$scope.posts = [];
 
     $scope.data = {};
+    $scope.data.configEditor = {
+    	height:'150'
+    };
+
     $scope.data.selection = $scope.actions[0];
     $scope.data.categorie = 'pygame';
     $scope.data.isEditing = false;

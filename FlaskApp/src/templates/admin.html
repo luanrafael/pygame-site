@@ -6,6 +6,8 @@
   {{ super() }}
   <link href="/static/css/lib/bootstrap_admin.css" rel="stylesheet">
   <link href="/static/css/admin.css" rel="stylesheet">
+  <script type="text/javascript" src="/static/js/lib/ckeditor/ckeditor.js"></script>
+  <script type="text/javascript" src="/static/js/lib/ng-ckeditor.min.js"></script>
   <script type="text/javascript" src="/static/js/src/services/posts_rest_api.js"></script>
   <script type="text/javascript" src="/static/js/src/controllers/admin_controller.js"></script>
   <script type="text/javascript">
@@ -65,8 +67,7 @@
         <div class="row row-post"  ng-switch-when="newPost">
           <div class="col-lg-10">
             <input type="text" class="form-control" placeholder="Titulo" ng-model="data.title">
-            
-            <textarea class="form-control" rows="10" cols="130" ng-model="data.content"></textarea>
+            <textarea ckeditor="data.configEditor" ng-model="data.content"></textarea>
             <div class="right">
             <button type="button" class="btn btn-primary" ng-hide="data.isEditing" ng-click="addPost()">Salvar post</button>
             <button type="button" class="btn btn-primary" ng-show="data.isEditing" ng-click="addPost(true)">Salvar post</button>
