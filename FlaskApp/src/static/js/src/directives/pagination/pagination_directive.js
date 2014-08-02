@@ -5,7 +5,8 @@ app.directive('pagination', function($rootScope){
 		replace: "true",
 		scope:{
 			morePosts: "&",
-			filterPage: "="
+			filterPage: "=",
+			show: "="
 		},
 		link: function(scope, element, attrs){
 			scope.showPagination = false;

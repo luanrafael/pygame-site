@@ -1,3 +1,17 @@
+.ops{
+	width: 460px;
+	height: 110px;
+	margin-left: 235px;
+}
+.ops img{
+	float: right;
+	margin-top: -56px;
+	margin-right: 10px;
+}
+.ops h3{
+	margin-top: 90px;
+}
+
 .title{
 	float: left;
 	margin-top: -125px;
