@@ -37,9 +37,9 @@ def create_test_database(cursor, name):
 	logging.info("trying to create the database %s" %name)
 	try:
 		cursor.execute("CREATE DATABASE %s" %name)
-	except ProgrammingError:
+	except MySQLdb.ProgrammingError:
 		logging.info("database %s exists!" %name)
-		destroy_test_database(name)
+		destroy_test_database(cursor, name)
 		cursor.execute("CREATE DATABASE %s" %name)
 
 def destroy_test_database(cursor, name):
@@ -48,7 +48,7 @@ def destroy_test_database(cursor, name):
 	database exists
 	"""
 	logging.info("trying to delete the database: %s" %name)
-	cursor.execute("DROP DATABASE IF EXISTS %" %name)
+	cursor.execute("DROP DATABASE IF EXISTS %s" %name)
 
 
 if __name__ == '__main__':

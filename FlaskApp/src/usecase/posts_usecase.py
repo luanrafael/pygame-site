@@ -12,6 +12,12 @@ def get_all_posts():
     """
     return Post.select()
 
+def get_post_by_id(id):
+    """
+    Get a post by an id 
+    """
+    return Post.selectBy() #TODO: terminar
+
 def save_post(author, content, title, subject):
     """
     Save a post and return the id of
