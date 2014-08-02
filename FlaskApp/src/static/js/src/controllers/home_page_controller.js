@@ -17,10 +17,6 @@ app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_ap
 		if ($window.pageYOffset > 165){} // TODO: terminar de implementar
 	};
 
-	$scope.$watch("search", function(){
-		if ($scope.search.length > 0)
-			$scope.hasPostOnPage = true;
-	});
 
 	var _get_posts = function(){
 		posts_rest_api.get_all_posts().success(function(result){
@@ -28,7 +24,6 @@ app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_ap
 			$scope.posts = result.posts.reverse();
 			_split_posts_pages(result.quant);
 			_transform_to_date($scope.posts);
-			_count_post_categories();
 		}).error(function(err){
 			console.log(err);
 		});
