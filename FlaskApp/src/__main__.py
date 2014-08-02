@@ -1,4 +1,4 @@
-from init_app import *
+from utils import *
 
 put_project_in_path()
 
@@ -10,9 +10,9 @@ from views import forum_views
 from views import projects_views
 from views import admin_views
 from rest_api import posts_rest_api
-from FlaskApp import config
+from src import config
 from db_config import init_db
-from FlaskApp.models.user import User
+from src.models.user import User
 
 # Configuring the application
 

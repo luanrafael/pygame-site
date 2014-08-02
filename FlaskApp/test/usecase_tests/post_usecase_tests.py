@@ -34,7 +34,6 @@ class PostTests(unittest.TestCase):
 		self.assertEquals(len(posts), 1)
 
 	def save_post_test(self):
-
 		#adding a post
 		saved_post = posts_usecase.save_post(
 			self.post_data["me"], self.post_data["content"], self.post_data["title"], 

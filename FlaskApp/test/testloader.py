@@ -11,22 +11,25 @@ ROOT_PATH = os.path.dirname(__file__)
 
 if __name__ == '__main__':
 	#find all files which ends with 'tests'
-	sys.path.append(PROJECT_PATH + '/src')
+
+	if PROJECT_PATH not in sys.path:
+		sys.path.append(PROJECT_PATH)
 
 	try:
-		tests = unittest.TestLoader().discover(sys.argv[1], "*tests.py")
+		suite = unittest.TestLoader().discover(sys.argv[1], "*.py")
 	except IndexError:
-		tests = unittest.TestLoader().discover(ROOT_PATH, "*tests.py")
+		suite = unittest.TestLoader().discover("test", "*tests.py")
 
 	#initialize the test db    
 	cursor = init_test_db.connect_to_database_server()
 	init_test_db.create_test_database(cursor, init_test_db.DATABASE_NAME)
 
     #run tests
-	result = unittest.TextTestRunner().run(tests)
+	#import pdb; pdb.set_trace()
+	result = unittest.TextTestRunner().run(suite)
 
 	if not result.wasSuccessful():
-		sys.exit(1)
-        init_test_db.destroy_test_database(cursor, init_test_db.DATABASE_NAME)
-	else:
 		init_test_db.destroy_test_database(cursor, init_test_db.DATABASE_NAME)
+		sys.exit(1)
+
+	init_test_db.destroy_test_database(cursor, init_test_db.DATABASE_NAME)

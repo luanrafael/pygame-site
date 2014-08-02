@@ -2,7 +2,7 @@
 
 from flask_login import login_user, logout_user
 from flask import Blueprint, request, redirect, render_template
-from FlaskApp.models.user import User
+from src.models.user import User
 
 __author__ = 'iury'
 
