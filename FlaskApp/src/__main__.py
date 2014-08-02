@@ -9,7 +9,7 @@ from views import docs_views
 from views import forum_views
 from views import projects_views
 from views import admin_views
-from rest_api import posts_rest_api
+from rest_api import posts_rest_api, contents_rest_api
 from src import config
 from db_config import init_db
 from src.models.user import User
@@ -31,7 +31,8 @@ def load_user(id):
 blueprints = [
     home_views.view, downloads_views.view, docs_views.view,
     forum_views.view, projects_views.view,
-    admin_views.view, posts_rest_api.posts_api, login.view
+    admin_views.view, posts_rest_api.posts_api, login.view,
+    contents_rest_api.contents_api
 ]
 
 map(app.register_blueprint, blueprints)

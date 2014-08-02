@@ -1,4 +1,4 @@
-app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_rest_api){
+app.controller('adminCtrl', ['$scope', 'posts_rest_api', 'content_rest_api', function($scope, posts_rest_api, content_rest_api){
 
 	$scope.show_success_post_message = false;
 	$scope.show_error_post_message = false;
@@ -36,6 +36,15 @@ app.controller('adminCtrl', ['$scope', 'posts_rest_api', function($scope, posts_
       $scope.data.isEditing = true;
       $scope.data.actual_id = post.id;
 
+    };
+
+    $scope.addContent = function(content){
+    	type = "download";
+    	var data = {
+    		content: content,
+    		type: type
+    	};
+    	content_rest_api.add_content(data);
     };
 
     $scope.deletePost = function(id, index){
