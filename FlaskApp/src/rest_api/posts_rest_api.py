@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from FlaskApp.models.post import Post
+from src.usecase import posts_usecase
 
 __author__ = 'iury'
 
@@ -8,16 +8,8 @@ posts_api = Blueprint("posts_api", __name__)
 
 @posts_api.route("/posts/get_all_posts", methods=["GET"])
 def get_all_posts():
-    posts = []
-    ind = 1
-    for post in Post.select().orderBy('date'):
-        post_dict = post.to_dict()
-        post_dict['ind'] = ind
-        ind += 1
-
-        posts.append(post_dict)
-        if ind == 5:
-            ind = 1
+    
+    posts = posts_usecase.get_all_posts()
 
     return jsonify({'posts': posts, 'quant': len(posts)})
 
@@ -29,19 +21,20 @@ def add_post():
     title = request.json['title']
     categorie = request.json['categorie']
 
-    Post.save_post(author, content, title, categorie)
-    return jsonify(request.json)
+    posts_usecase.save_post(author, content, title, categorie)
+    return jsonify({})
 
 
 @posts_api.route("/posts/delete_post", methods=["POST"])
 def delete_post():
-    id = request.json['id']
-    Post.delete_post(id)
-    return jsonify({})
+    _id = request.json['id']
+    has_success_on_delete = posts_usecase.delete_post(_id)
+    return jsonify({'has_success_on_delete': has_success_on_delete})
 
 
 @posts_api.route("/posts/edit_post", methods=["POST"])
 def edit_post():
-    id = request.json.pop('id')
-    Post.edit_post(id, request.json)
+    _id = request.json.pop('id')
+    print request.json
+    posts_usecase.edit_post(_id, request.json)
     return jsonify({})

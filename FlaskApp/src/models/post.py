@@ -54,3 +54,5 @@ class Post(ModelBase):
         post.content = kwargs['content']
         post.title = kwargs['title']
         post.categorie = kwargs['categorie']
+
+        return post.id
