@@ -13,13 +13,20 @@ class Content(ModelBase):
     example: html string data like: <p> hello world! </p>
     """
     data = BLOBCol()
-    type = StringCol()
+    _type = StringCol()
     
 
-    def get_content(type):
-        return Content.selectBy(type=type)
+    @classmethod
+    def get_content(cls, _type):
+        return Content.selectBy(_type=_type)
 
     @classmethod
     def save_data(cls, data, _type=""):
-        content = Content(data=data, type=_type)
+        content = Content(data=data, _type=_type)
         return content
+
+    def to_dict(self):
+        return{
+            "data": self.data,
+            "type": self._type
+        }

@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
-
-<html>
-	<head>
-        <link rel="stylesheet" href="/static/css/home.css">
-        <script type="text/javascript" src="/static/js/controllers/downloads_controller.js"></script>
-	</head>
-	<body>
-		{% block header %}
-			{{ super() }}
-            <div ng-bind-html-unsafe="content">
-
-            </div>
-		{% endblock %}
-		
+{% block head %}
+  {{super()}}
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+	<link rel="stylesheet" href="/static/css/home.css">
+	<script type="text/javascript" src="/static/js/src/services/content_rest_api.js"></script>
+	<script type="text/javascript" src="/static/js/src/controllers/downloads_controller.js"></script>
+{% endblock %}
+{% block header %}
+	{{super()}}
+{% endblock %}
+{% block main %}
+	<div ng-controller="downloadsCtrl">
+    	<div ng-bind-html-unsafe="content"></div>
+    </div>
+{% endblock %}
 	</body>
 </html>
