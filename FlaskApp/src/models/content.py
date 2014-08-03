@@ -21,7 +21,11 @@ class Content(ModelBase):
         return Content.selectBy(typeof=_type).limit(1)
 
     @classmethod
-    def save_data(cls, data, _type=""):
+    def get_content_by_id(cls, _id):
+        return Content.selectBy(id=_id)
+
+    @classmethod
+    def save_data(cls, _id, data, _type=""):
         content = Content(data=data, typeof=_type)
         return content
 
