@@ -14,3 +14,9 @@ def add_content():
 	content_usecase.add_content(content, _type)
 	return jsonify({})
 
+@contents_api.route("/content/get_content", methods=["GET"])
+def get_content():
+	content = request.json["type"]
+	content_usecase.add_content(content, _type)
+	return jsonify({})
+

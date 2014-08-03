@@ -14,8 +14,9 @@ class Content(ModelBase):
     """
     data = BLOBCol()
     type = StringCol()
+    
 
-    def get_data(type):
+    def get_content(type):
         return Content.selectBy(type=type)
 
     @classmethod
