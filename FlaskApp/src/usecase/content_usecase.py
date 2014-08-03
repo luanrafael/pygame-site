@@ -9,5 +9,5 @@ def add_content(content, _type):
 	Content.save_data(content, _type)
 
 def get_content(_type):
-	content = Content.get_content(_type)
-	return content[0]
+	content = [content for content in Content.get_content(_type)]
+	return content[0] if len(content) >= 1 else []

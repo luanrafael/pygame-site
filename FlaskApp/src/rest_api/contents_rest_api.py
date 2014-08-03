@@ -18,5 +18,6 @@ def add_content():
 def get_content():
 	_type = request.json["type"]
 	content = content_usecase.get_content(_type)
-	return jsonify({content.to_dict()})
+	print content
+	return jsonify(content.to_dict() if content else {})
 
