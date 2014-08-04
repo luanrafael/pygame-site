@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template
 from flask_login import current_user
-from jinja2 import TemplateNotFound
 
 view = Blueprint('downloads_view', __name__, template_folder='templates')
 
