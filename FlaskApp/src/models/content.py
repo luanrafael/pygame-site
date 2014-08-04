@@ -21,12 +21,14 @@ class Content(ModelBase):
         return Content.selectBy(typeof=_type).limit(1)
 
     @classmethod
-    def get_content_by_id(cls, _id):
-        return Content.selectBy(id=_id)
+    def get_content_by_id(cls, _id):  # todo: terminar
+        return Content.selectBy(id=_id).limit(1)
 
     @classmethod
     def save_data(cls, _id, data, _type=""):
-        content = Content(data=data, typeof=_type)
+        content = Content.get_content_by_id(_id)
+        if content:
+            content.data = data
         return content
 
     def to_dict(self):

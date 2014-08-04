@@ -8,6 +8,7 @@ __author__ = 'iury'
 def add_content(content, _type):
 	content = get_content(_type)
 	if content:
+		import pdb; pdb.set_trace()
 		Content.save_data(content.id, content, _type)
 
 def get_content(_type):
