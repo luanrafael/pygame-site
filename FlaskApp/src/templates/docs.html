@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
-
-<html>
-	<head>
-	</head>
-	<body>
-		{% block header %}
-			{{ super() }}
-		{% endblock %}
-
+{% block head %}
+  {{super()}}
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+    <link rel="stylesheet" href="/static/css/docs.css">
+{% endblock %}
+{% block header %}
+	{{super()}}
+{% endblock %}
+{% block main %}
+    <div class="alert alert-warning" role="alert">
+        A tradução da documentação ainda será traduzida para o português. Enquanto isso você pode acessar a documentação
+        oficial <a href="http://www.pygame.org/docs/" target="_blank">aqui</a>.
+    </div>
+{% endblock %}
 	</body>
 </html>
