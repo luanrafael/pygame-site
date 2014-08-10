@@ -5,6 +5,8 @@
 {% block scripts %}
   {{ super() }}
 	<link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/segment.css">
+    <link rel="stylesheet" href="/static/css/docs.css">
 	<script type="text/javascript" src="/static/js/src/services/content_rest_api.js"></script>
 	<script type="text/javascript" src="/static/js/src/controllers/downloads_controller.js"></script>
 {% endblock %}
@@ -13,8 +15,8 @@
 {% endblock %}
 {% block main %}
 	<div ng-controller="downloadsCtrl">
-    	<div ng-bind-html-unsafe="content"></div>
+    	<div class="ui stacked segment downloads-segment" ng-bind-html-unsafe="content"></div>
     </div>
 {% endblock %}
 	</body>
-</html>
+</html>p

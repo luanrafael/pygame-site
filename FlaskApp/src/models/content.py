@@ -14,7 +14,6 @@ class Content(ModelBase):
     """
     data = BLOBCol()
     typeof = StringCol()
-    
 
     @classmethod
     def get_content(cls, _type):
@@ -26,7 +25,7 @@ class Content(ModelBase):
 
     @classmethod
     def save_data(cls, _id, data, _type=""):
-        content = Content.get_content_by_id(_id)
+        content = Content.get_content_by_id(_id)[0]
         if content:
             content.data = data
         return content

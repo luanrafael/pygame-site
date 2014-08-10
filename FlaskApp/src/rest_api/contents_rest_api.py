@@ -9,10 +9,10 @@ contents_api = Blueprint("contents_api", __name__)
 
 @contents_api.route("/content/add_content", methods=["POST"])
 def add_content():
-	content = request.json["content"]
-	_type = request.json["type"]
-	content_usecase.add_content(content, _type)
-	return jsonify({})
+    data = request.json["content"]
+    _type = request.json["type"]
+    content_usecase.add_content(data, _type)
+    return jsonify({})
 
 @contents_api.route("/content/get_content", methods=["POST"])
 def get_content():
