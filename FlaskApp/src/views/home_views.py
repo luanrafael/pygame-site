@@ -6,7 +6,6 @@ view = Blueprint('home_view', __name__, template_folder='templates')
 
 @view.route('/')
 def home():
-
     values = {}
     if current_user:
         values = {"user": current_user}

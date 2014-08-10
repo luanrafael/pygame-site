@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
-
-<html>
-	<head>
-	<link rel="stylesheet" href="/static/css/home.css">
-	</head>
-	<body>
-		{% block header %}
-			{{ super() }}
-		{% endblock %}
-
+{% block head %}
+  {{super()}}
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
+{% block header %}
+	{{super()}}
+{% endblock %}
+{% block main %}
+    <div class="alert alert-warning" role="alert">
+        O forúm ainda está sendo desenvolvido
+    </div>
+{% endblock %}
 	</body>
 </html>
