@@ -8,9 +8,7 @@ posts_api = Blueprint("posts_api", __name__)
 
 @posts_api.route("/posts/get_all_posts", methods=["GET"])
 def get_all_posts():
-    
     posts = posts_usecase.get_all_posts()
-
     return jsonify({'posts': posts, 'quant': len(posts)})
 
 

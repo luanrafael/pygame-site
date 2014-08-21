@@ -10,4 +10,3 @@ def home():
     if current_user:
         values = {"user": current_user}
     return render_template("docs.html", values=values)
-

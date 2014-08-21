@@ -1,4 +1,4 @@
-from utils import *
+from utils import get_secret_key, put_project_in_path
 
 put_project_in_path()
 

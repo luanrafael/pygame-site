@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 
 from src.models.content import Content
 
@@ -9,6 +9,7 @@ def add_content(data, _type):
     content = get_content(_type)
     if content:
         Content.save_data(content.id, data, _type)
+
 
 def get_content(_type):
     content = [content for content in Content.get_content(_type)]
