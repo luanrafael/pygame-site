@@ -1,21 +1,19 @@
 #coding utf-8
 
 import unittest
+import test_base
 from sqlobject import SQLObjectNotFound
 from src.usecase import posts_usecase
 from src.models.post import Post
 
-class PostTests(unittest.TestCase):
+
+class PostTests(test_base.PygameTests):
 
 	@classmethod
 	def setUpClass(cls):
-		try:
-			Post.createTable()
-		except Exception:
-			pass
-
+		super(PostTests, cls).setUpClass(Post)
+		
 	def setUp(self):
-		super(PostTests, self).setUp()
 
 		#common data for all tests in this class
 		self.post_data = {
