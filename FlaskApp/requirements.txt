@@ -1,5 +1,5 @@
 Flask==0.10.1
-sqlobject==1.6.0
+sqlobject
 mysql-python
 flask-login
 mock==1.0.1

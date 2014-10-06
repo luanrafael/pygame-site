@@ -20,19 +20,26 @@ class Post(ModelBase):
     date = DateTimeCol(default=DateTimeCol.now)
     categorie = StringCol(default=None)
 
-    def to_dict(self):
+    def to_dict(self, exclude=None):
         """
         return a dict of the fields in the class plus the id field,
         which is a unique field for each object
         """
-        return {
-            'categorie': self.categorie,
+
+        data = {
+        		'categorie': self.categorie,
             'author': self.author,
             'content': self.content,
             'title': self.title,
             'date': self.date,
             'id': self.id
-        }
+            }
+
+        if exclude is not None:
+        	for item in exclude:
+        		data.pop(item)
+
+        return data
 
     @classmethod
     def save_post(cls, author, content, title, categorie):
@@ -50,9 +57,18 @@ class Post(ModelBase):
     @classmethod
     def edit_post(cls, id, **kwargs):
         post = cls.get(id)
-        post.author = kwargs['author']
-        post.content = kwargs['content']
-        post.title = kwargs['title']
-        post.categorie = kwargs['categorie']
+
+        if 'author' in kwargs:
+        	post.author = kwargs['author']
+        if 'content' in kwargs:
+        	post.content = kwargs['content']
+        if 'title' in kwargs:
+        	post.title = kwargs['title']
+        if 'categorie' in kwargs:
+        	post.categorie = kwargs['categorie']
 
         return post.id
+
+    @classmethod
+    def get_by_id(cls, _id):
+    	return cls.selectBy(id=_id)

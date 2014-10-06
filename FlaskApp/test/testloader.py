@@ -4,32 +4,30 @@
 import unittest
 import sys
 import os
-import init_test_db
 
-PROJECT_PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-2])
-ROOT_PATH = os.path.dirname(__file__)
+
 
 if __name__ == '__main__':
-	#find all files which ends with 'tests'
+	
+	PROJECT_PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-2])
 
+	#put the project in path
 	if PROJECT_PATH not in sys.path:
 		sys.path.append(PROJECT_PATH)
 
-	try:
-		suite = unittest.TestLoader().discover(sys.argv[1], "*.py")
-	except IndexError:
-		suite = unittest.TestLoader().discover("test", "*tests.py")
+	from  src import db_config
 
-	#initialize the test db    
-	cursor = init_test_db.connect_to_database_server()
-	init_test_db.create_test_database(cursor, init_test_db.DATABASE_NAME)
-
-    #run tests
-	#import pdb; pdb.set_trace()
+	cursor = db_config.connect_to_database("root", "pygame").cursor()
+	db_config.create_database(cursor, "test2")
+	uri = db_config.get_database_uri("mysql", "root", "pygame", "test2")
+	db_config.init_db(uri)
+	#find all files which ends with 'tests'
+	suite = unittest.TestLoader().discover(".", "*.py")
+  #run tests
 	result = unittest.TextTestRunner().run(suite)
 
 	if not result.wasSuccessful():
-		init_test_db.destroy_test_database(cursor, init_test_db.DATABASE_NAME)
+		db_config.delete_database(cursor, "test2")
 		sys.exit(1)
 
-	init_test_db.destroy_test_database(cursor, init_test_db.DATABASE_NAME)
+	db_config.delete_database(cursor, "test2")

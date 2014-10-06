@@ -24,13 +24,6 @@ def get_all_posts():
     return posts
 
 
-def get_post_by_id(id):
-    """
-    Get a post by an id
-    """
-    return Post.selectBy()  # TODO: terminar
-
-
 def save_post(author, content, title, categorie):
     """
     Save a post and return the id of
@@ -44,8 +37,7 @@ def delete_post(_id):
     """
     Delete a post by id
     """
-    has_success_on_delete = Post.delete_post(_id)
-    return has_success_on_delete
+    return Post.delete_post(_id)
 
 
 def edit_post(_id, dic):
@@ -56,3 +48,7 @@ def edit_post(_id, dic):
     """
     _id = Post.edit_post(_id, **dic)
     return _id
+
+def delete_all_posts():
+	for post in Post.select():
+		delete_post(post.id)
