@@ -3,8 +3,6 @@
 from sqlobject import StringCol, BLOBCol
 from model_base import ModelBase
 
-__author__ = 'iury'
-
 
 class Content(ModelBase):
 
@@ -17,18 +15,21 @@ class Content(ModelBase):
 
     @classmethod
     def get_content(cls, _type):
-        return Content.selectBy(typeof=_type).limit(1)
+        return cls.selectBy(typeof=_type).limit(1)
 
     @classmethod
     def get_content_by_id(cls, _id):  # todo: terminar
         return Content.selectBy(id=_id).limit(1)
 
     @classmethod
-    def save_data(cls, _id, data, _type=""):
-        content = Content.get_content_by_id(_id)[0]
-        if content:
-            content.data = data
-        return content
+    def save_content(cls, data, _type=""):
+    		content = cls(data=data, typeof=_type)
+
+    		return content.id
+
+    @classmethod
+    def delete_content(cls, _id):
+    	cls.delete(_id)
 
     def to_dict(self):
         return{

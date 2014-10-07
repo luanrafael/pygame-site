@@ -25,7 +25,6 @@ class Post(ModelBase):
         return a dict of the fields in the class plus the id field,
         which is a unique field for each object
         """
-
         data = {
         		'categorie': self.categorie,
             'author': self.author,
@@ -49,9 +48,6 @@ class Post(ModelBase):
 
     @classmethod
     def delete_post(cls, id):
-        """
-        TODO: retornar o status da operacao
-        """
         cls.delete(id)
 
     @classmethod

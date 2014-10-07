@@ -9,19 +9,7 @@ def get_all_posts():
     """
     Return all posts
     """
-    posts = []
-    _max = 0
-    ind = 1
-    for post in Post.select().orderBy('date'):
-        post_dict = post.to_dict()
-        post_dict['ind'] = ind
-        _max += 1
-
-        posts.append(post_dict)
-        if _max == 5:
-            _max = 0
-            ind += 1
-    return posts
+    return [post for post in Post.select().orderBy('date')]
 
 
 def save_post(author, content, title, categorie):
