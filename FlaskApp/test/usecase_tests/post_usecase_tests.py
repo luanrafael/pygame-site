@@ -35,10 +35,11 @@ class PostTests(test_base.PygameTests):
 			self.post_data["categorie"]
 			)
 
-		posts = [post for post in posts_usecase.get_all_posts()]
+		posts = [post.to_dict(exclude=["date", "id"]) for post in posts_usecase.get_all_posts()]
 
 		# we must have one post
 		self.assertEquals(len(posts), 1)
+		self.assertEquals(posts, [self.post_data])
 
 	def test_save_post(self):
 		#adding a post
