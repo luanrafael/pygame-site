@@ -5,7 +5,6 @@ from src.models.content import Content
 
 __author__ = 'iury'
 
-
 def add_content(data, _type):
 	Content.save_content(data, _type)
 

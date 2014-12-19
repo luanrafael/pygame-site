@@ -4,7 +4,6 @@ from src.models.post import Post
 
 __author__ = 'iury'
 
-
 def get_all_posts():
     """
     Return all posts

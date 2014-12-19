@@ -1,8 +1,12 @@
+# coding: utf-8
+
 import os
+_basedir = os.path.abspath(os.path.dirname(__file__))
 
+DEBUG = True
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-template_dir = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "templates")
+ADMINS = frozenset(['youremail@yourdomain.com'])
+SECRET_KEY = 'This string will be replaced with a proper key in production.'
 
-debug = True
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(_basedir, 'app.db')
+DATABASE_CONNECT_OPTIONS = {}

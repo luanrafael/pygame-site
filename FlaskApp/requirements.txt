@@ -1,6 +1,5 @@
 Flask==0.10.1
-sqlobject
+flask-sqlalchemy
 mysql-python
 flask-login
-mock==1.0.1
 flake8==2.1.0
