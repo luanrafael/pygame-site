@@ -3,22 +3,13 @@
 # This module should  only have operations on
 # database level
 
-from flask_sqlalchemy import _BoundDeclarativeMeta
 from app import db
-
-
-class _UserMeta(_BoundDeclarativeMeta):
-
-    def __new__(cls, name, bases, attrs):
-        cls.session = db.session
-
-        return super(_UserMeta, cls).__new__(cls, name, bases, attrs)
 
 
 class User(db.Model):
 
     __tablename__ = 'users'
-    __metaclass__ = _UserMeta
+    session = db.session
     active = db.Column(db.Boolean)
     admin = db.Column(db.Boolean)
     name = db.Column(db.String(80))
