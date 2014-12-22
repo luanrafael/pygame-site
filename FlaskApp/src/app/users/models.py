@@ -1,60 +1,66 @@
 # coding: utf-8
 
-__author__ = 'iury'
+# This module should  only have operations on
+# database level
 
+from flask_sqlalchemy import _BoundDeclarativeMeta
 from app import db
+
+
+class _UserMeta(_BoundDeclarativeMeta):
+
+    def __new__(cls, name, bases, attrs):
+        cls.session = db.session
+
+        return super(_UserMeta, cls).__new__(cls, name, bases, attrs)
+
 
 class User(db.Model):
 
-		__tablename__ = 'users'
-		active = db.Column(db.Boolean)
-		admin = db.Column(db.Boolean)
-		name = db.Column(db.String(80))
-		login = db.Column(db.String(80), primary_key=True)
-		password = db.Column(db.String(80))
-		gender = db.Column(db.String(20))
+    __tablename__ = 'users'
+    __metaclass__ = _UserMeta
+    active = db.Column(db.Boolean)
+    admin = db.Column(db.Boolean)
+    name = db.Column(db.String(80))
+    login = db.Column(db.String(80), primary_key=True)
+    password = db.Column(db.String(80))
+    gender = db.Column(db.String(20))
 
-		def __init__(self, name, login, password, gender):
-			self.name = name
-			self.login = login
-			self.password = password
-			self.gender = gender
+    def __init__(self, name, login, password, gender, is_admin=False):
+        self.name = name
+        self.login = login
+        self.password = password
+        self.gender = gender
+        self.is_active = True
+        self.is_admin = is_admin
 
-		def to_dict(self):
-			return{
+    def to_dict(self):
+        return {
             'is_admin': self.admin,
             'is_active': self.active,
             'name': self.name
         }
 
-		def is_active(self):
-			return True
+    def is_active(self):
+        return self.is_active
 
-		def is_authenticated(self):
-			return True
+    def is_admin(self):
+        return self.is_admin
 
-		def is_anonymous(self):
-			return False
+    @classmethod
+    def delete_user(cls, login):
+        cls.session.query(cls).filter(cls.login == login).delete()
+        cls.session.commit()
 
-		def get_id(self):
-			return self.id
+    @classmethod
+    def get_all_users(cls):
+        return cls.session.query(cls).all()
 
-		def is_admin(self):
-			return self.admin
+    @classmethod
+    def save_user(cls, user):
+        cls.session.add(user)
+        cls.session.commit()
 
-		@classmethod
-		def delete_user(cls, id):
-			cls.delete(id)
-
-		@classmethod
-		def get_all_users(cls):
-			return cls.query.all()
-
-		@classmethod
-		def save_user(cls, user, session):
-			session.add(user)
-			session.commit()
-
-		@classmethod
-		def get_user_by_login(cls, login):
-			return cls.query(login=login).first()
+    @classmethod
+    def get_user_by_login(cls, login):
+        return cls.session.query(cls).get(login)
