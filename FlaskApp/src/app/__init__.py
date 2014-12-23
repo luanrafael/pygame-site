@@ -41,6 +41,8 @@ PROJECT_PATH = os.path.sep.join(
 if PROJECT_PATH not in sys.path:
 	sys.path.append(PROJECT_PATH)
 
-from users import api_views
+from users import api_views as user_views
+from posts import api_views as post_views
 
-app.register_blueprint(api_views.users_api)
+app.register_blueprint(user_views.users_api)
+app.register_blueprint(post_views.posts_api)
