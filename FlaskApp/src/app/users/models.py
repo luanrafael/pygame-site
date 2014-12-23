@@ -55,3 +55,7 @@ class User(db.Model):
     @classmethod
     def get_user_by_login(cls, login):
         return cls.session.query(cls).get(login)
+
+    @classmethod
+    def get_users(cls):
+        return cls.session.query(cls).all()

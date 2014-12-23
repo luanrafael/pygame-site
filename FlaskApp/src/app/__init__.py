@@ -1,7 +1,7 @@
 import os
 import sys
 
-from flask import Flask, render_template
+from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -41,4 +41,6 @@ PROJECT_PATH = os.path.sep.join(
 if PROJECT_PATH not in sys.path:
 	sys.path.append(PROJECT_PATH)
 
-#app.register_blueprint(usersModule)
+from users import api_views
+
+app.register_blueprint(api_views.users_api)
