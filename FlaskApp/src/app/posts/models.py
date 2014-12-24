@@ -52,5 +52,7 @@ class Post(db.Model):
         return post
 
     @classmethod
-    def get_posts(cls, quantity):
-        return cls.session.query(cls).order_by(cls.id).limit(quantity).all()
+    def get_posts(cls, quantity=None):
+        if quantity is not None:
+            return cls.session.query(cls).order_by(cls.id).limit(quantity).all()
+        return cls.session.query(cls).all()

@@ -27,12 +27,13 @@ class PostsApiTests(unittest.TestCase):
     def setUp(self):
         self.client = app.Flask.test_client(app.app)
         self.maxDiff = None
-        self.post_id = post_usecase.add_post("iury", "teste", "teste", "pygame")
 
     def tearDown(self):
-        post_usecase.delete_post(self.post_id)
+        post_usecase.delete_all_posts()
 
     def test_get_post(self):
+        post_usecase.add_post("iury", "teste", "teste", "pygame")
+
         data = json.dumps({"quantity": 1}) # because we just have one =(
         response = self.client.get("/api/posts/get", data=data)
 
@@ -50,14 +51,17 @@ class PostsApiTests(unittest.TestCase):
         })
 
     def test_delete_post(self):
-        data = json.dumps({"id": 1})
+        post_id = post_usecase.add_post("iury", "teste", "teste", "pygame")
 
+        data = json.dumps({"id": post_id})
         response = self.client.post("/api/posts/delete", data=data)
 
         self.assertEqual(response.status_code, 200)
 
     def test_edit_post(self):
-        data = json.dumps({"id": self.post_id, "title": "new title", "content": "new content"})
+        post_id = post_usecase.add_post("iury", "teste", "teste", "pygame")
+
+        data = json.dumps({"id": post_id, "title": "new title", "content": "new content"})
 
         response = self.client.post("/api/posts/edit",data=data)
 
