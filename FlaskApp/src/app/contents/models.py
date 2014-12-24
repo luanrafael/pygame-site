@@ -2,6 +2,7 @@
 
 from app import db
 
+
 class Content(db.Model):
 
     __tablename__ = "contents"

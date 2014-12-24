@@ -7,7 +7,6 @@ import usecase
 posts_api = Blueprint("posts_api", __name__, url_prefix="/api/posts")
 
 
-
 @posts_api.route("/add", methods=["POST"])
 def add():
     data = json.loads(request.data)
@@ -15,20 +14,23 @@ def add():
 
     return jsonify({})
 
+
 @posts_api.route("/get", methods=["GET"])
 def get():
     quantity = json.loads(request.data)["quantity"]
     posts = usecase.get_posts(quantity)
 
-    data = [post.to_dict()  for post in posts]
+    data = [post.to_dict() for post in posts]
     return jsonify(data=data)
+
 
 @posts_api.route("/delete", methods=["POST"])
 def delete():
     _id = json.loads(request.data)["id"]
 
     usecase.delete_post(_id)
-    return  jsonify({})
+    return jsonify({})
+
 
 @posts_api.route("/edit", methods=["POST"])
 def edit():

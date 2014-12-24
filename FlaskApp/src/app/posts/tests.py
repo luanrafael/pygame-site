@@ -14,6 +14,7 @@ if PROJECT_PATH not in sys.path:
 from app.posts import usecase as post_usecase
 import app
 
+
 class PostsApiTests(unittest.TestCase):
 
     @classmethod
@@ -34,7 +35,7 @@ class PostsApiTests(unittest.TestCase):
     def test_get_post(self):
         post_usecase.add_post("iury", "teste", "teste", "pygame")
 
-        data = json.dumps({"quantity": 1}) # because we just have one =(
+        data = json.dumps({"quantity": 1})  # because we just have one =(
         response = self.client.get("/api/posts/get", data=data)
 
         data = json.loads(response.data)
@@ -61,9 +62,10 @@ class PostsApiTests(unittest.TestCase):
     def test_edit_post(self):
         post_id = post_usecase.add_post("iury", "teste", "teste", "pygame")
 
-        data = json.dumps({"id": post_id, "title": "new title", "content": "new content"})
+        data = json.dumps(
+            {"id": post_id, "title": "new title", "content": "new content"})
 
-        response = self.client.post("/api/posts/edit",data=data)
+        response = self.client.post("/api/posts/edit", data=data)
 
         data = json.loads(response.data)
         post = data["data"]
@@ -79,14 +81,18 @@ class PostsApiTests(unittest.TestCase):
         })
 
     def test_add_post(self):
-        data = json.dumps({"title": "new post", "author": "me", "content": "<p> hello </p>", "categorie": "pygame"})
+        data = json.dumps({"title": "new post",
+                           "author": "me",
+                           "content": "<p> hello </p>",
+                           "categorie": "pygame"})
 
         response = self.client.post("/api/posts/add", data=data)
 
         self.assertEqual(response.status_code, 200)
 
     def test_edit_post_that_doesnt_exists(self):
-        data = json.dumps({"id": 42, "title": "new title", "content": "new content"})
+        data = json.dumps(
+            {"id": 42, "title": "new title", "content": "new content"})
 
         response = self.client.post("/api/posts/edit", data=data)
         self.assertEqual(response.status_code, 500)

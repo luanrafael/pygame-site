@@ -4,6 +4,7 @@ from src.models.post import Post
 
 __author__ = 'iury'
 
+
 def get_all_posts():
     """
     Return all posts
@@ -36,6 +37,7 @@ def edit_post(_id, dic):
     _id = Post.edit_post(_id, **dic)
     return _id
 
+
 def delete_all_posts():
-	for post in Post.select():
-		delete_post(post.id)
+    for post in Post.select():
+        delete_post(post.id)

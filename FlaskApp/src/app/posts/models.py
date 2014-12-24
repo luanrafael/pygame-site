@@ -24,13 +24,13 @@ class Post(db.Model):
 
     def to_dict(self):
         return {
-        	'categorie': self.categorie,
+            'categorie': self.categorie,
             'author': self.author,
             'content': self.content,
             'title': self.title,
             'date': self.date,
             'id': self.id
-            }
+        }
 
     @classmethod
     def make_commit(cls):
@@ -54,5 +54,6 @@ class Post(db.Model):
     @classmethod
     def get_posts(cls, quantity=None):
         if quantity is not None:
-            return cls.session.query(cls).order_by(cls.id).limit(quantity).all()
+            return cls.session.query(cls).order_by(
+                cls.id).limit(quantity).all()
         return cls.session.query(cls).all()

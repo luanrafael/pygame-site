@@ -18,7 +18,7 @@ def add_content():
 
 @contents_api.route("/content/get_content", methods=["POST"])
 def get_content():
-	_type = request.json["type"]
-	content = content_usecase.get_content(_type)
-	print content
-	return jsonify(content.to_dict() if content else {})
+    _type = request.json["type"]
+    content = content_usecase.get_content(_type)
+    print content
+    return jsonify(content.to_dict() if content else {})

@@ -27,22 +27,27 @@ class UserApiTests(unittest.TestCase):
 
     def test_get_by_login(self):
         user_usecase.add_user("iury", "iury", "passwd", "Male")
-        data  = json.dumps({"login": "iury"})
+        data = json.dumps({"login": "iury"})
         response = self.client.post("/api/users/get_by_login", data=data)
 
         data = json.loads(response.data)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(data, {u'is_active': None, u'is_admin': None, u'name': u'iury'})
+        self.assertEqual(
+            data, {
+                u'is_active': None, u'is_admin': None, u'name': u'iury'})
 
     def test_add_user(self):
 
-        data  = json.dumps({"login": "iury", "name": "iury", "password": "passwd", "gender": "Male"})
+        data = json.dumps({"login": "iury",
+                           "name": "iury",
+                           "password": "passwd",
+                           "gender": "Male"})
         response = self.client.post("/api/users/add", data=data)
         self.assertEqual(response.status_code, 200)
 
     def test_remove_user(self):
         user_usecase.add_user("iury", "iury", "passwd", "Male")
-        data  = json.dumps({"login": "iury"})
+        data = json.dumps({"login": "iury"})
         response = self.client.post("/api/users/delete", data=data)
 
         self.assertEqual(response.status_code, 200)
@@ -53,7 +58,9 @@ class UserApiTests(unittest.TestCase):
         json_data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json_data["data"], [{u'is_admin': None, u'is_active': None, u'name': u'iury'}])
+        self.assertEqual(
+            json_data["data"],
+            [{u'is_admin': None, u'is_active': None, u'name': u'iury'}])
 
 if __name__ == '__main__':
     unittest.main()

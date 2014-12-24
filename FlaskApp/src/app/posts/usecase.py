@@ -2,20 +2,25 @@
 
 from models import Post
 
+
 def get_posts(quantity=None):
     return Post.get_posts(quantity=quantity)
+
 
 def delete_all_posts():
     for post in get_posts():
         delete_post(post.id)
 
+
 def delete_post(id):
     Post.delete_post(id)
+
 
 def add_post(author, content, title, categorie):
     post = Post(author, content, title, categorie)
     Post.save_post(post)
     return post.id
+
 
 def edit_post(id, **kwargs):
     author = kwargs.get("author")

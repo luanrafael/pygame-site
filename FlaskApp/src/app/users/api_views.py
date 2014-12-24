@@ -6,6 +6,7 @@ import usecase
 
 users_api = Blueprint("users_api", __name__, url_prefix="/api/users")
 
+
 @users_api.route("/add", methods=["POST"])
 def add():
     data = json.loads(request.data)
@@ -13,11 +14,13 @@ def add():
 
     return jsonify({})
 
+
 @users_api.route("/get_all", methods=["GET"])
 def get_all():
     users = usecase.get_users()
 
     return jsonify(data=[user.to_dict() for user in users])
+
 
 @users_api.route("/get_by_login", methods=["POST"])
 def get_by_login():
@@ -25,6 +28,7 @@ def get_by_login():
     user = usecase.get_user_by_login(data["login"])
 
     return jsonify(user.to_dict())
+
 
 @users_api.route("/delete", methods=["POST"])
 def delete():

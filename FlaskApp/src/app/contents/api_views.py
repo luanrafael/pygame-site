@@ -14,19 +14,22 @@ def add():
 
     return jsonify(data={})
 
+
 @contents_api.route("/get", methods=["GET"])
 def get():
     contents = usecase.get_contents()
 
-    data = [content.to_dict()  for content in contents]
+    data = [content.to_dict() for content in contents]
     return jsonify(data=data)
+
 
 @contents_api.route("/delete", methods=["POST"])
 def delete():
     _type = json.loads(request.data)["_type"]
 
     usecase.delete_content(_type)
-    return  jsonify(data={})
+    return jsonify(data={})
+
 
 @contents_api.route("/edit", methods=["POST"])
 def edit():

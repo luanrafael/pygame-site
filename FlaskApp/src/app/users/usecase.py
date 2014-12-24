@@ -20,5 +20,6 @@ def delete_all_users():
 def get_user_by_login(login):
     return User.get_user_by_login(login)
 
+
 def get_users():
     return User.get_users() or []
