@@ -1,38 +1,44 @@
 # coding: utf-8
 
-from sqlobject import StringCol, BLOBCol
-from model_base import ModelBase
+from app import db
 
+class Content(db.Model):
 
-class Content(ModelBase):
+    __tablename__ = "contents"
+    session = db.session
+    data = db.Column(db.Text())
+    _type = db.Column(db.String(80), primary_key=True)
 
-    """
-    Class that contains a data of contents
-    example: html string data like: <p> hello world! </p>
-    """
-    data = BLOBCol()
-    typeof = StringCol()
-
-    @classmethod
-    def get_content(cls, _type):
-        return cls.selectBy(typeof=_type).limit(1)
-
-    @classmethod
-    def get_content_by_id(cls, _id):  # todo: terminar
-        return Content.selectBy(id=_id).limit(1)
-
-    @classmethod
-    def save_content(cls, data, _type=""):
-    		content = cls(data=data, typeof=_type)
-
-    		return content.id
-
-    @classmethod
-    def delete_content(cls, _id):
-    	cls.delete(_id)
+    def __init__(self, data, type):
+        self.data = data
+        self._type = type
 
     def to_dict(self):
         return{
             "data": self.data,
-            "type": self.typeof
+            "_type": self._type,
         }
+
+    @classmethod
+    def make_commit(cls):
+        cls.session.commit()
+
+    @classmethod
+    def get_contents(cls):
+        return cls.session.query(cls).all()
+
+    @classmethod
+    def get_content_by_type(cls, _type):
+        return cls.session.query(cls).get(_type)
+
+    @classmethod
+    def save_content(cls, content):
+        cls.session.add(content)
+        cls.make_commit()
+
+        return content._type
+
+    @classmethod
+    def delete_content(cls, _type):
+        cls.session.query(cls).filter(cls._type == _type).delete()
+        cls.make_commit()

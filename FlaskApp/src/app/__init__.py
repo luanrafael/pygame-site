@@ -43,6 +43,8 @@ if PROJECT_PATH not in sys.path:
 
 from users import api_views as user_views
 from posts import api_views as post_views
+from contents import api_views as contents_views
 
 app.register_blueprint(user_views.users_api)
 app.register_blueprint(post_views.posts_api)
+app.register_blueprint(contents_views.contents_api)
