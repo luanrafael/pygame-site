@@ -1,7 +1,7 @@
 import os
 import sys
 
-from flask import Flask, render_template
+from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
-########################
+########################e
 # Configure Secret Key #
 ########################
 
