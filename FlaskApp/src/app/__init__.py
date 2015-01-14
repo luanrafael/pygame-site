@@ -2,9 +2,11 @@ import os
 import sys
 
 from flask import Flask
+from flask_login import LoginManager
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+login_manager  = LoginManager(app=app)
 app.config.from_object('config')
 
 db = SQLAlchemy(app)
@@ -50,6 +52,15 @@ from posts import api_views as post_views
 from posts import web_views as post_web_views
 from contents import api_views as contents_views
 from contents import web_views as contents_web_views
+from users import usecase as user_usecase
+
+# create all tables
+db.create_all()
+
+@login_manager.user_loader
+def load_user(login):
+    return user_usecase.get_user_by_login(login)
+
 
 app.register_blueprint(user_views.users_api)
 app.register_blueprint(user_web_views.web_views)

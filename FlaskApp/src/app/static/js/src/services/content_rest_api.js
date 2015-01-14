@@ -2,9 +2,9 @@
 app.factory("content_rest_api", ['$http', function($http){
 	'use strict';
 
-    var endpoint = '/content';
-	var add_content_url = endpoint + '/add_content';
-	var get_content_url = endpoint + '/get_content';
+    var endpoint = '/api/contents';
+	var add_content_url = endpoint + '/add';
+	var get_content_url = endpoint + '/get';
 
 	var add_content = function(data){
 		return $http.post(add_content_url, data);
@@ -14,7 +14,7 @@ app.factory("content_rest_api", ['$http', function($http){
 		var data = {
 			type: type
 		};
-		return $http.post(get_content_url, data);
+		return $http.get(get_content_url, data);
 	};
 
 	return {

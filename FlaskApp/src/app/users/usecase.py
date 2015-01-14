@@ -21,5 +21,20 @@ def get_user_by_login(login):
     return User.get_user_by_login(login)
 
 
+def check_user_credentials(login, password):
+    user = get_user_by_login(login)
+    if user is not None:
+        if user.password == password:
+            return user
+    return None
+
 def get_users():
     return User.get_users() or []
+
+
+def authentic_user(user):
+    user.authentic(user)
+
+
+def unauthentic_user(user):
+    user.unauthentic(user)

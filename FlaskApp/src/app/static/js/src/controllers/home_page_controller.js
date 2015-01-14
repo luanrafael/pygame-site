@@ -19,9 +19,9 @@ app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_ap
 
 
 	var _get_posts = function(){
-		posts_rest_api.get_all_posts().success(function(result){
+		posts_rest_api.get(10).success(function(result){
 			$scope.isLoading = false;
-			$scope.posts = result.posts.reverse();
+			$scope.posts = result.data.reverse();
 			_split_posts_pages(result.quant);
 			_transform_to_date($scope.posts);
 		}).error(function(err){

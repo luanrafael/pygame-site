@@ -17,7 +17,7 @@ def add():
 
 @posts_api.route("/get", methods=["GET"])
 def get():
-    quantity = json.loads(request.data)["quantity"]
+    quantity = int(request.query_string.split("=")[1])
     posts = usecase.get_posts(quantity)
 
     data = [post.to_dict() for post in posts]
