@@ -7,8 +7,7 @@ app.directive("post", function(){
 		scope:{
 			postOptions: "=",
 			selectedPost: "=",
-			disableAllPosts: "&",
-			showPost: "="
+			disableAllPosts: "&"
 		},
 		link: function  (scope, elm, attrs) {
 
