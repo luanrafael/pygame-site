@@ -1,5 +1,5 @@
-<ul class="pagination pagination-md" ng-show="(showPagination && show)">
-	<li ng-repeat="page in postPages">
-		<a ng-click="filterByPage(page)">{page + 1}</a>
+<ul class="pagination pagination-md">
+	<li ng-repeat="page in options.pages">
+		<a ng-click="filterByPage(page)">{$index + 1}</a>
 	</li>
 </ul>
