@@ -33,8 +33,8 @@ def get_users():
 
 
 def authentic_user(user):
-    user.authentic(user)
+    user.authentic()
 
 
 def unauthentic_user(user):
-    user.unauthentic(user)
+    user.unauthentic()
