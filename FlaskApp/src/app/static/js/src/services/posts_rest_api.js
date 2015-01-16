@@ -9,8 +9,9 @@ app.factory("posts_rest_api", ['$http', function($http){
     var edit_post_url = endpoint + '/edit';
 
 	var _get = function(quantity){
-        var query_params = '?quantity=' + quantity;
-		return $http.get(get_url + query_params);
+		return $http.get(get_url, {
+			params: {quantity: quantity}
+		});
 	};
 
 	var _add = function(data){

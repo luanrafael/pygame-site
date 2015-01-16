@@ -1,6 +1,7 @@
 	
 
-app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_api', function($scope, $rootScope, $window, posts_rest_api){
+app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_api', 
+	function($scope, $rootScope, $window, posts_rest_api){
 
 	$scope.posts = [];
 	$scope.filterPage = "1";

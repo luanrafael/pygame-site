@@ -14,7 +14,7 @@ def admin():
         return redirect('/login')
 
     values["user"] = current_user.name
-    return render_template("admin.html")
+    return render_template("admin.html", values=values)
 
 
 @web_views.route('/signup', methods=["POST"])
