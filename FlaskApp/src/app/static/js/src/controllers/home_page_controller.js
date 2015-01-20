@@ -1,42 +1,46 @@
-app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_api', 
-	function($scope, $rootScope, $window, posts_rest_api){
+app.controller('homePageCtrl', function($scope, $rootScope, $window, PostsModel, posts_rest_api){
 		"use strict";
 
-		$scope.posts = [];
-		$scope.filterPage = "1";
-		$scope.data = {};
-		$scope.data.post_pages = [];
-		$scope.hasPostOnPage = true;
+		var model;
+		$scope.model = model = PostsModel;
+		$scope.pagination_options = {};
+
+		$scope.getPosts = function(multiplier){
+			var multiplier =  multiplier || 1;
+
+			//TODO: essa lógica deveria
+			//estar em outro lugar
+			model.end = model.end * multiplier;
+
+			if (multiplier !== 1){
+				model.begin = model.begin + 5;
+			}
+			console.log(model.begin + " " + model.end);
+			posts_rest_api.get(model.begin, model.end).success(function(result){
+				$scope.isLoading = false;
+				model.posts = result.data.reverse();
+				$scope.pagination_options.pages = range(model.posts.length / 5);
+				_transform_to_date(model.posts);
+			}).error(function(err){
+				console.log(err);
+			});
+		};
+
+		$scope.pagination_options.getPosts = $scope.getPosts;
 
 		$window.onload = function(){
 			$scope.isLoading = true;
-			_get_posts();
+			$scope.getPosts(1);
 		};
 
 		$window.onscroll = function(){
 			if ($window.pageYOffset > 165){} // TODO: terminar de implementar
 		};
 
-
-		var _get_posts = function(){
-			posts_rest_api.get(10).success(function(result){
-				$scope.isLoading = false;
-				$scope.posts = result.data.reverse();
-				$scope.data.pages = range($scope.posts.length / 5);
-				_transform_to_date($scope.posts);
-			}).error(function(err){
-				console.log(err);
-			});
-		};
-
-		$scope.hasPagination = function(){
-			return $scope.posts.length >= 5;
-		};
-
 		var range = function(number){
-			// transformar em diretiva
-			var list = [];
-			for(var i = 0;  i < number; i++){
+			// TODO: transformar em filtro
+			var list = [1];
+			for(var i = 1;  i <= number; i++){
 				list.push(number);
 			}
 			return list;
@@ -48,4 +52,4 @@ app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_ap
 			}
 		};
 	}
-]);
+);

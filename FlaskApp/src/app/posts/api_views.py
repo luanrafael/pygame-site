@@ -3,6 +3,7 @@
 import json
 from flask import Blueprint, jsonify, request, make_response
 import usecase
+import utils
 
 posts_api = Blueprint("posts_api", __name__, url_prefix="/api/posts")
 
@@ -17,11 +18,15 @@ def add():
 
 @posts_api.route("/get", methods=["GET"])
 def get():
-    quantity = int(request.query_string.split("=")[1])
-    posts = usecase.get_posts(quantity)
+	request_dict = utils.parse_from_query_string(request.query_string)
 
-    data = [post.to_dict() for post in posts]
-    return jsonify(data=data)
+	begin = int(request_dict["begin"])
+	end = int(request_dict["end"])
+
+	posts = usecase.get_posts(begin, end)
+
+	data = [post.to_dict() for post in posts]
+	return jsonify(data=data)
 
 
 @posts_api.route("/delete", methods=["POST"])

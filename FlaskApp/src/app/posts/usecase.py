@@ -3,8 +3,8 @@
 from models import Post
 
 
-def get_posts(quantity=None):
-    return Post.get_posts(quantity=quantity)
+def get_posts(begin, end):
+    return Post.get_posts(begin, end)
 
 
 def delete_all_posts():

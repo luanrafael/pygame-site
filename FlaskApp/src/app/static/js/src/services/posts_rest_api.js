@@ -8,9 +8,12 @@ app.factory("posts_rest_api", ['$http', function($http){
     var delete_post_url = endpoint + '/delete';
     var edit_post_url = endpoint + '/edit';
 
-	var _get = function(quantity){
+	var _get = function(begin, end){
 		return $http.get(get_url, {
-			params: {quantity: quantity}
+			params: {
+				begin: begin,
+				end: end
+			}
 		});
 	};
 

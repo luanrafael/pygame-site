@@ -18,3 +18,14 @@ def put_project_in_path():
     )
     if PROJECT_PATH not in sys.path:
         sys.path.append(PROJECT_PATH)
+
+def parse_from_query_string(query_string):
+	"""
+	returns a dict from the given  query query_string
+	"""
+	dic = {}
+
+	for argument in query_string.split("&"):
+		key, value = argument.split("=")
+		dic[key] = value
+	return dic
