@@ -48,3 +48,8 @@ def edit():
         response.status_code = 500
         return response
     return jsonify(data=edited_post.to_dict())
+
+@posts_api.route("/count", methods=["GET"])
+def count():
+	quantity = usecase.count_posts()
+	return jsonify(data={"quantity": quantity})

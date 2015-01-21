@@ -1,5 +1,4 @@
-
-app.factory("posts_rest_api", ['$http', function($http){
+angular.module("app").factory("posts_rest_api", function($http){
 	'use strict';
 
     var endpoint = '/api/posts';
@@ -7,6 +6,7 @@ app.factory("posts_rest_api", ['$http', function($http){
 	var add_post_url = endpoint + '/add';
     var delete_post_url = endpoint + '/delete';
     var edit_post_url = endpoint + '/edit';
+    var count_posts_url = endpoint + '/count';
 
 	var _get = function(begin, end){
 		return $http.get(get_url, {
@@ -27,13 +27,18 @@ app.factory("posts_rest_api", ['$http', function($http){
 
     var _edit  = function(data){
         return $http.post(edit_post_url, data);
-    }
+    };
+
+    var _count = function(){
+    	return $http.get(cout_posts_url);
+    };
 
 	return {
 		get: _get,
 		add: _add,
         delete: _delete,
-        edit: _edit
+        edit: _edit,
+        count: _count
 	};
 
-}]);
+});

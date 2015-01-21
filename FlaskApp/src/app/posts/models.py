@@ -37,12 +37,12 @@ class Post(db.Model):
         cls.session.commit()
 
     @classmethod
-    def save_post(cls, post):
+    def save(cls, post):
         cls.session.add(post)
         cls.make_commit()
 
     @classmethod
-    def delete_post(cls, id):
+    def delete(cls, id):
         cls.session.query(cls).filter(cls.id == id).delete()
         cls.make_commit()
 
@@ -52,5 +52,9 @@ class Post(db.Model):
         return post
 
     @classmethod
-    def get_posts(cls, begin, end):
+    def get(cls, begin, end):
     	return cls.session.query(cls).order_by(cls.id).offset(begin).limit(end).all()
+
+    @classmethod
+    def count(cls):
+    	return cls.session.query(cls).count()
