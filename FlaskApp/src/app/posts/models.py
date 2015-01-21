@@ -10,11 +10,11 @@ class Post(db.Model):
     session = db.session
 
     id = db.Column(db.Integer(), primary_key=True)
-    author = db.Column(db.String(80))
-    content = db.Column(db.Text())
-    title = db.Column(db.String(80))
+    author = db.Column(db.Unicode(80))
+    content = db.Column(db.UnicodeText())
+    title = db.Column(db.Unicode(80))
     date = db.Column(db.DateTime(), onupdate=datetime.datetime.now())
-    categorie = db.Column(db.String(80))
+    categorie = db.Column(db.Unicode(80))
 
     def __init__(self, author, content, title, categorie):
         self.author = author
@@ -38,11 +38,15 @@ class Post(db.Model):
 
     @classmethod
     def save(cls, post):
+    	# TODO: nao deveria
+    	# ser classmethod
         cls.session.add(post)
         cls.make_commit()
 
     @classmethod
     def delete(cls, id):
+    	# TODO: nao deveria
+    	# ser classmethod
         cls.session.query(cls).filter(cls.id == id).delete()
         cls.make_commit()
 
