@@ -8,9 +8,8 @@ angular.module("app").directive('pagination', function($rootScope,  posts_rest_a
 		},
 		link: function(scope, elm, atrrs){
 			scope.getMorePosts = function(index){
-				scope.options.getPosts(index);
-
-			}
+				scope.options.getPosts(index + 1);
+			};
 		}
 	};
 });

@@ -69,3 +69,6 @@
 .pagination.pagination-md{
 	margin-left: 37%;
 }
+.pagination-active{
+	background-color: #18bc9c !important;
+}

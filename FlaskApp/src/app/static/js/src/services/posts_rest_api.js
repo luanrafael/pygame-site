@@ -30,7 +30,7 @@ angular.module("app").factory("posts_rest_api", function($http){
     };
 
     var _count = function(){
-    	return $http.get(cout_posts_url);
+    	return $http.get(count_posts_url);
     };
 
 	return {
