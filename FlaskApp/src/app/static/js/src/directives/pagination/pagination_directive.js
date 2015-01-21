@@ -1,27 +1,15 @@
-app.directive('pagination', function($rootScope){
+angular.module("app").directive('pagination', function($rootScope,  posts_rest_api){
 	return{
 		templateUrl: '/static/js/src/directives/pagination/pagination_directive.html',
 		restrict: "E",
 		replace: "true",
 		scope:{
-			morePosts: "&",
-			filterPage: "=",
-			show: "="
+			options: "="
 		},
-		link: function(scope, element, attrs){
-			scope.showPagination = false;
+		link: function(scope, elm, atrrs){
+			scope.getMorePosts = function(index){
+				scope.options.getPosts(index);
 
-			$rootScope.$on("post_pages_event", function(ngEvent, data){
-				scope.postPages = data.post_pages;
-
-				if (scope.postPages.length >= 2){
-					scope.showPagination = true;
-				}
-			});
-
-			scope.filterByPage = function(page){
-				page = page + 1;
-				scope.filterPage = page.toString();
 			}
 		}
 	};

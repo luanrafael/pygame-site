@@ -1,47 +1,55 @@
-	
+app.controller('homePageCtrl', function($scope, $rootScope, $window, PostsModel, posts_rest_api){
+		"use strict";
 
-app.controller('homePageCtrl', ['$scope','$rootScope', '$window', 'posts_rest_api', 
-	function($scope, $rootScope, $window, posts_rest_api){
+		var model;
+		$scope.model = model = PostsModel;
+		$scope.pagination_options = {};
 
-	$scope.posts = [];
-	$scope.filterPage = "1";
-	$scope.data = {};
-	$scope.data.post_pages = [];
-	$scope.hasPostOnPage = true;
+		$scope.getPosts = function(multiplier){
+			var multiplier =  multiplier || 1;
 
-	$window.onload = function(){
-		$scope.isLoading = true;
-		_get_posts();
-	};
+			//TODO: essa lógica deveria
+			//estar em outro lugar
+			model.end = model.end * multiplier;
 
-	$window.onscroll = function(){
-		if ($window.pageYOffset > 165){} // TODO: terminar de implementar
-	};
+			if (multiplier !== 1){
+				model.begin = model.begin + 5;
+			}
+			console.log(model.begin + " " + model.end);
+			posts_rest_api.get(model.begin, model.end).success(function(result){
+				$scope.isLoading = false;
+				model.posts = result.data.reverse();
+				$scope.pagination_options.pages = range(model.posts.length / 5);
+				_transform_to_date(model.posts);
+			}).error(function(err){
+				console.log(err);
+			});
+		};
 
+		$scope.pagination_options.getPosts = $scope.getPosts;
 
-	var _get_posts = function(){
-		posts_rest_api.get(10).success(function(result){
-			$scope.isLoading = false;
-			$scope.posts = result.data.reverse();
-			_split_posts_pages(result.quant);
-			_transform_to_date($scope.posts);
-		}).error(function(err){
-			console.log(err);
-		});
-	};
+		$window.onload = function(){
+			$scope.isLoading = true;
+			$scope.getPosts(1);
+		};
 
-	var _transform_to_date = function(list){
-		for (var item =  0; item < list.length; item++){
-			list[item].date = new Date(Date.parse(list[item].date));
-		}
-	};
+		$window.onscroll = function(){
+			if ($window.pageYOffset > 165){} // TODO: terminar de implementar
+		};
 
-	var _split_posts_pages = function(quant){
-		range = (quant / 10) + 1;
-		for(var i = 0; i < range; i++){
-			$scope.data.post_pages.push(i);
-		}
+		var range = function(number){
+			// TODO: transformar em filtro
+			var list = [1];
+			for(var i = 1;  i <= number; i++){
+				list.push(number);
+			}
+			return list;
+		};
 
-		$rootScope.$broadcast("post_pages_event", $scope.data);
+		var _transform_to_date = function(list){
+			for (var item =  0; item < list.length; item++){
+				list[item].date = new Date(Date.parse(list[item].date));
+			}
+		};
 	}
-}]);
+);

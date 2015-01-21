@@ -13,7 +13,7 @@ class Post(db.Model):
     author = db.Column(db.String(80))
     content = db.Column(db.Text())
     title = db.Column(db.String(80))
-    date = db.Column(db.DateTime(), onupdate=datetime.datetime.now)
+    date = db.Column(db.DateTime(), onupdate=datetime.datetime.now())
     categorie = db.Column(db.String(80))
 
     def __init__(self, author, content, title, categorie):
@@ -28,7 +28,7 @@ class Post(db.Model):
             'author': self.author,
             'content': self.content,
             'title': self.title,
-            'date': self.date,
+            'date': str(self.date),
             'id': self.id
         }
 
@@ -52,8 +52,5 @@ class Post(db.Model):
         return post
 
     @classmethod
-    def get_posts(cls, quantity=None):
-        if quantity is not None:
-            return cls.session.query(cls).order_by(
-                cls.id).limit(quantity).all()
-        return cls.session.query(cls).all()
+    def get_posts(cls, begin, end):
+    	return cls.session.query(cls).order_by(cls.id).offset(begin).limit(end).all()
