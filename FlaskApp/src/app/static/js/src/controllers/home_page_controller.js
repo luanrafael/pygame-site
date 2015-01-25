@@ -17,6 +17,10 @@ app.controller('homePageCtrl', function($scope, $rootScope, $window, PostsModel,
 			});
 		};
 
+		$scope.hasPosts =  function(){
+			return model.posts.length !== 0;
+		};
+
 		$scope.pagination_options.getPosts = $scope.getPosts;
 
 		$window.onload = function(){

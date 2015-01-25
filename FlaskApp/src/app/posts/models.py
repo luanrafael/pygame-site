@@ -56,7 +56,7 @@ class Post(db.Model):
         return post
 
     @classmethod
-    def get_all(self):
+    def get_all(cls):
     	return cls.session.query(cls).all()
 
     @classmethod

@@ -11,8 +11,11 @@ def get_posts(begin):
 
 
 def delete_all_posts():
-    for post in get_all():
-        delete(post.id)
+	  """This is a slow operation  if you have
+	  many posts
+	  """
+	  for post in Post.get_all():
+	  	delete_post(post.id)
 
 
 def delete_post(id):
