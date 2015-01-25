@@ -56,8 +56,12 @@ class Post(db.Model):
         return post
 
     @classmethod
-    def get(cls, begin):
-    	return cls.session.query(cls).order_by(cls.id).offset(begin).limit(5).all()
+    def get_all(self):
+    	return cls.session.query(cls).all()
+
+    @classmethod
+    def get_from_offset(cls, begin, limit=5):
+    	return cls.session.query(cls).order_by(cls.id).offset(begin).limit(limit).all()
 
     @classmethod
     def count(cls):

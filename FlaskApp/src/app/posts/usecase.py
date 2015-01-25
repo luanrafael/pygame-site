@@ -7,11 +7,11 @@ def count_posts():
 
 
 def get_posts(begin):
-    return Post.get(begin)
+    return Post.get_from_offset(begin)
 
 
 def delete_all_posts():
-    for post in get():
+    for post in get_all():
         delete(post.id)
 
 
