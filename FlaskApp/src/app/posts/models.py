@@ -13,7 +13,7 @@ class Post(db.Model):
     author = db.Column(db.Unicode(80))
     content = db.Column(db.UnicodeText())
     title = db.Column(db.Unicode(80))
-    date = db.Column(db.DateTime(), onupdate=datetime.datetime.now())
+    date = db.Column(db.DateTime(), onupdate=datetime.datetime.now(), default=datetime.datetime.now)
     categorie = db.Column(db.Unicode(80))
 
     def __init__(self, author, content, title, categorie):
@@ -56,8 +56,8 @@ class Post(db.Model):
         return post
 
     @classmethod
-    def get(cls, begin, end):
-    	return cls.session.query(cls).order_by(cls.id).offset(begin).limit(end).all()
+    def get(cls, begin):
+    	return cls.session.query(cls).order_by(cls.id).offset(begin).limit(5).all()
 
     @classmethod
     def count(cls):
