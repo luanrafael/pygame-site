@@ -2,23 +2,26 @@
 
 from models import Post
 
+def count_posts():
+	return Post.count()
+
 
 def get_posts(begin, end):
-    return Post.get_posts(begin, end)
+    return Post.get(begin, end)
 
 
 def delete_all_posts():
-    for post in get_posts():
-        delete_post(post.id)
+    for post in get():
+        delete(post.id)
 
 
 def delete_post(id):
-    Post.delete_post(id)
+    Post.delete(id)
 
 
 def add_post(author, content, title, categorie):
     post = Post(author, content, title, categorie)
-    Post.save_post(post)
+    Post.save(post)
     return post.id
 
 

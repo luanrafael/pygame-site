@@ -5,6 +5,8 @@ angular.module("app").service("PostsModel", function(){
 		posts: [],
 		begin: 0,
 		end: 5,
+		quantity: 0,
+		multiplier: 1
 	}
 
 	return posts_model;
