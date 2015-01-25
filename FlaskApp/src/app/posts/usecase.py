@@ -6,8 +6,8 @@ def count_posts():
 	return Post.count()
 
 
-def get_posts(begin, end):
-    return Post.get(begin, end)
+def get_posts(begin):
+    return Post.get(begin)
 
 
 def delete_all_posts():
