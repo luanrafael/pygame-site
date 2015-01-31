@@ -1,4 +1,5 @@
-app.directive("loader", function(){
+angular.module("app").directive("loader", function(){
+    'use strict';
 	return{
 		restrict: "E",
 		replace: true,

@@ -1,4 +1,5 @@
-app.controller('homePageCtrl', function($scope, $rootScope, $window, PostsModel, posts_rest_api){
+angular.module("app")
+    .controller('homePageCtrl', function($scope, $rootScope, $window, PostsModel, posts_rest_api){
 		"use strict";
 
 		var model;
