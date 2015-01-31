@@ -1,8 +1,8 @@
-app.filter('sliceContent', function(){
+app.filter('sliceContent', function($compile){
 
-	var html = '<a class="link" ng-click="showEntirePost()">Leia Mais</a>';
-
+	var html = ""//'<a class="link" ng-click="showEntirePost()">Leia Mais</a>';
+		
 	return function(input){
-		return input.slice(0, 400) + '...' + html;
+		return input.slice(0, 1000) + '...' + html;
 	};
 });
