@@ -5,26 +5,24 @@ app.controller('homePageCtrl', function($scope, $rootScope, $window, PostsModel,
 		$scope.model = model = PostsModel;
 		$scope.pagination_options = {};
 
-		$scope.getPosts = function(multiplier){
-			if (multiplier > model.multiplier){
-				model.end = model.end * multiplier;
-				if (multiplier !== 1){
-					model.begin = model.begin + 5;
-				}
-			}else{
-				model.end = 5 * multiplier;
-				model.begin = model.end - 5;
-			}
-			model.multiplier = multiplier;
+		$scope.getPosts = function(index){
+			var begin = 5 * (index -1);
 
-			console.log(model.begin + " " + model.end);
-			posts_rest_api.get(model.begin, model.end).success(function(result){
+			posts_rest_api.get(begin).success(function(result){
 				$scope.isLoading = false;
 				model.posts = result.data.reverse();
 				_transform_to_date(model.posts);
 			}).error(function(err){
 				console.log(err);
 			});
+		};
+
+		$scope.hasPosts = function(){
+			return model.posts.length > 0;
+		};
+
+		$scope.showPagination  = function(){
+			return model.posts.length > 5;
 		};
 
 		$scope.pagination_options.getPosts = $scope.getPosts;

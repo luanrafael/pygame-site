@@ -3,10 +3,7 @@ angular.module("app").service("PostsModel", function(){
 
 	var posts_model = {
 		posts: [],
-		begin: 0,
-		end: 5,
-		quantity: 0,
-		multiplier: 1
+		quantity: 0
 	}
 
 	return posts_model;

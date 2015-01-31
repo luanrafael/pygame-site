@@ -6,13 +6,16 @@ def count_posts():
 	return Post.count()
 
 
-def get_posts(begin, end):
-    return Post.get(begin, end)
+def get_posts(begin):
+    return Post.get_from_offset(begin)
 
 
 def delete_all_posts():
-    for post in get():
-        delete(post.id)
+	  """This is a slow operation  if you have
+	  many posts
+	  """
+	  for post in Post.get_all():
+	  	delete_post(post.id)
 
 
 def delete_post(id):

@@ -21,9 +21,8 @@ def get():
 	request_dict = utils.parse_from_query_string(request.query_string)
 
 	begin = int(request_dict["begin"])
-	end = int(request_dict["end"])
 
-	posts = usecase.get_posts(begin, end)
+	posts = usecase.get_posts(begin)
 
 	data = [post.to_dict() for post in posts]
 	return jsonify(data=data)
