@@ -18,11 +18,13 @@
 		{{ super() }}
 	{% endblock %}
 	{% block main %}
-	<div ng-controller="homePageCtrl"> 
+	<div ng-controller="homePageCtrl" ng-cloak>
 		<loader ng-show="isLoading"></loader>
 		<div ng-show="!isLoading">
 			<ul ng-repeat="post in model.posts track by post.id | orderBy:post.date | filter: categorie | filter: search">
-				<post post-options="post" selected-post="data"></post>
+                <li>
+				    <post post-options="post" selected-post="data"></post>
+                </li>
 			</ul>
 		</div>
 		<div ng-show="!hasPosts()" class="ops">
