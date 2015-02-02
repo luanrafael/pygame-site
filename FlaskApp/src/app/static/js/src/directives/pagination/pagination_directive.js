@@ -1,4 +1,4 @@
-angular.module("app").directive('pagination', function($rootScope,  posts_rest_api){
+angular.module("app").directive('pagination', function($timeout){
 	return{
 		templateUrl: '/static/js/src/directives/pagination/pagination_directive.html',
 		restrict: "E",
@@ -6,9 +6,12 @@ angular.module("app").directive('pagination', function($rootScope,  posts_rest_a
 		scope:{
 			options: "="
 		},
-		link: function(scope, elm, atrrs){
+		link: function(scope){
 			scope.getMorePosts = function(index){
-				scope.options.getPosts(index + 1);
+                scope.options.scrollTop();
+                $timeout(function(){
+                    scope.options.getPosts(index + 1);
+                }, 600);
 			};
 		}
 	};

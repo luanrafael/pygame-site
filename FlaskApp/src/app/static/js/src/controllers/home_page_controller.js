@@ -5,6 +5,7 @@ angular.module("app")
 		var model;
 		$scope.model = model = PostsModel;
 		$scope.pagination_options = {};
+        $scope.showPagination = false;
 
 		$scope.getPosts = function(index){
 			var begin = 5 * (index -1);
@@ -12,8 +13,12 @@ angular.module("app")
 			posts_rest_api.get(begin).success(function(result){
 				$scope.isLoading = false;
 				model.posts = result.data.reverse();
+                if (model.posts.length > 5){
+                    $scope.showPagination = true;
+                }
 				_transform_to_date(model.posts);
 			}).error(function(err){
+                $scope.isLoading = false;
 				console.log(err);
 			});
 		};
@@ -22,11 +27,12 @@ angular.module("app")
 			return model.posts.length > 0;
 		};
 
-		$scope.showPagination  = function(){
-			return model.posts.length > 5;
-		};
-
 		$scope.pagination_options.getPosts = $scope.getPosts;
+        $scope.pagination_options.scrollTop =  function(){
+            jQuery('html, body').animate({
+                scrollTop: jQuery("#top").offset().top
+            }, 500);
+        };
 
 		$window.onload = function(){
 			$scope.isLoading = true;
