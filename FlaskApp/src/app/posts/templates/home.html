@@ -21,7 +21,7 @@
 	<div ng-controller="homePageCtrl" ng-cloak>
 		<loader ng-show="isLoading"></loader>
 		<div ng-show="!isLoading">
-			<ul ng-repeat="post in model.posts track by post.id | orderBy:post.date | filter: categorie | filter: search">
+			<ul ng-repeat="post in model.posts track by $index | orderBy:post.date | filter:search">
                 <li>
 				    <post post-options="post" selected-post="data"></post>
                 </li>
@@ -37,7 +37,7 @@
 	    		<input class="form-control" ng-model="search" placeholder="nome, autor ou qualquer outra palavra">
 	    	</div>
 	  	</div>
-	 	<pagination ng-show="!isLoading && showPagination()"options="pagination_options"></pagination>
+	 	<pagination ng-show="!isLoading && showPagination" options="pagination_options"></pagination>
 	 </div>
 	{% endblock %}
 	

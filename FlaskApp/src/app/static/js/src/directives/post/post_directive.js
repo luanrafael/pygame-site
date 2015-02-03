@@ -12,7 +12,7 @@ angular.module("app").directive("post", function($compile, $timeout){
 			selectedPost: "=",
 			disableAllPosts: "&"
 		},
-		link: function  (scope, elm, attrs) {
+		link: function  (scope, elm) {
             scope.entirePost = false;
 
             // TODO: deixar como arquivo  estatico
@@ -21,10 +21,13 @@ angular.module("app").directive("post", function($compile, $timeout){
 
             }
             var showMoreLink = '<a class="link" ng-click="showEntirePost()" ng-show="!entirePost">Leia Mais</a>';
-            var el = $compile(showMoreLink)(scope);
-            $timeout(function() {
-                elm[0].getElementsByTagName("p")[0].firstChild.appendChild(el[0]);
-            }, 0);
+
+            if (scope.postOptions.content.length >= 1000) {
+                var el = $compile(showMoreLink)(scope);
+                $timeout(function () {
+                    elm[0].getElementsByTagName("p")[0].firstChild.appendChild(el[0]);
+                }, 0);
+            }
 			scope.showEntirePost = function(){
 				scope.entirePost = true;
       			

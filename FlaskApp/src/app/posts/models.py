@@ -38,14 +38,14 @@ class Post(db.Model):
 
     @classmethod
     def save(cls, post):
-    	# TODO: nao deveria
+        # TODO: nao deveria
     	# ser classmethod
         cls.session.add(post)
         cls.make_commit()
 
     @classmethod
     def delete(cls, id):
-    	# TODO: nao deveria
+        # TODO: nao deveria
     	# ser classmethod
         cls.session.query(cls).filter(cls.id == id).delete()
         cls.make_commit()
@@ -57,12 +57,12 @@ class Post(db.Model):
 
     @classmethod
     def get_all(cls):
-    	return cls.session.query(cls).all()
+        return cls.session.query(cls).all()
 
     @classmethod
-    def get_from_offset(cls, begin, limit=5):
-    	return cls.session.query(cls).order_by(cls.id).offset(begin).limit(limit).all()
+    def get_from_offset(cls, begin, limit=6):
+        return cls.session.query(cls).order_by(cls.id).offset(begin).limit(limit).all()
 
     @classmethod
     def count(cls):
-    	return cls.session.query(cls).count()
+        return cls.session.query(cls).count()
