@@ -1,3 +1,5 @@
+## Este readme está desatualizado, não use ele como referência
+
 pygame-site
 ===========
 
