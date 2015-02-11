@@ -18,19 +18,18 @@
 	margin-left: 129px;
 }
 .content{
-	float: left;
 	margin-top: -56px;
 	margin-left: 129px;
+    height: 100%;
 }
 .post-date{
-	position: absolute;
 	top: 260px;
 	margin-left: 449px;
 }
 .post-date p{
 	float: right;
-	margin-right: -87px;
-	margin-top: -20px;
+	margin-right: 28px;
+	margin-top: 35px;
 }
 .link{
 	color: #18bc9c;

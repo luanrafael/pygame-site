@@ -1,5 +1,4 @@
-
-app.factory("content_rest_api", ['$http', function($http){
+angular.module("app").factory("content_rest_api", ['$http', function($http){
 	'use strict';
 
     var endpoint = '/api/contents';

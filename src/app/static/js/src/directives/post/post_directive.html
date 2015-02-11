@@ -8,14 +8,11 @@
   <div class="content">
     <p ng-show="!entirePost" ng-bind-html="postOptions.content | sliceContent">
     </p>
-    
     <p ng-show="entirePost" ng-bind-html="postOptions.content">
     </p>
-    <ul>
-      <li class="post-date">
-        postado por {[postOptions.author]} em :
-        <p>{[postOptions.date | date]}</p>
-      </li>
+      <div class="post-date">
+        <p>postado por {[postOptions.author]} em {[postOptions.date | date]}</p>
+      </div>
     </ul>
   </div>
   <br><br>
