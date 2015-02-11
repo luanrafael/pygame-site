@@ -13,13 +13,12 @@ angular.module("app").controller('adminCtrl', ['$scope', 'posts_rest_api', 'cont
         };
 
         $scope.data.selection = $scope.actions[0];
-        $scope.data.categorie = 'pygame';
         $scope.data.isEditing = false;
         $scope.data.actual_id = null;
         $scope.$watch('data.selection', function(){
             if ($scope.data.selection === 'managePosts'){
-                posts_rest_api.get(10).success(function(result){
-                    $scope.posts = result.posts.reverse();
+                posts_rest_api.get(0).success(function(result){
+                    $scope.posts = result.data.reverse();
                     _transform_to_date($scope.posts);
                 }).error(function(err){
                     console.log(err);
@@ -78,7 +77,7 @@ angular.module("app").controller('adminCtrl', ['$scope', 'posts_rest_api', 'cont
                     $scope.show_error_post_message = true;
                 });
             }
-            _clear_fields('categorie', 'title', 'content');
+            _clear_fields('title', 'content');
         };
 
         var _transform_to_date = function(list){
