@@ -6,6 +6,21 @@ angular.module("app")
 		$scope.model = model = PostsModel;
 		$scope.pagination_options = {};
         $scope.showPagination = false;
+        $scope.post_found = true;
+        
+		$scope.compareTitle = function(input, expected){
+
+			if (!expected)
+				return true;
+
+			if (input.search(expected) == -1){
+				$scope.post_found = false;
+			}else{
+				$scope.post_found  = true;
+			}
+			return $scope.post_found;
+		};
+
 
 		$scope.getPosts = function(index){
 			var begin = 5 * (index -1);

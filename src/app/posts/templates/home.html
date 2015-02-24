@@ -19,17 +19,22 @@
 	{% endblock %}
 	{% block main %}
 	<div ng-controller="homePageCtrl" ng-cloak>
+	{[search.$]}
 		<loader ng-show="isLoading"></loader>
 		<div ng-show="!isLoading">
-			<ul ng-repeat="post in model.posts track by $index | orderBy:post.date | filter:search">
-                <li>
+			<ul ng-repeat="post in model.posts track by $index | orderBy:post.date">
+                <li ng-show="compareTitle(post.title, search)">
 				    <post post-options="post" selected-post="data"></post>
                 </li>
 			</ul>
 		</div>
 		<div ng-show="!hasPosts()" class="ops">
-			<h3>Ops! Nenhum post foi encontrado</h3>
+			<h3>Ops! Nenhum post foi encontrado!</h3>
 			<img src="/static/img/sad.png"> 
+		</div>
+		<div ng-show="!post_found" class="ops">
+			<h3>Ops! Nenhum post foi encontrado com sua busca!</h3>
+			<img style="margin-top: -80px;margin-right: -49px;" src="/static/img/sad.png"> 
 		</div>
 		<div class="six wide column">
 	    	<div class="ui segment">

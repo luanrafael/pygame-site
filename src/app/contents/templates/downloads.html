@@ -14,9 +14,375 @@
 	{{super()}}
 {% endblock %}
 {% block main %}
-	<div ng-controller="downloadsCtrl">
-    	<div class="ui stacked segment downloads-segment" ng-bind-html-unsafe="content"></div>
-    </div>
+	<div class="ui segment">
+	  <div class="ui vertical segment">
+	  <h3> Fonte </h3>
+	  <p>Os arquivos para download estão disponíveis em:
+		<a href="http://pygame.org/ftp" target="_blank">http://pygame.org/ftp.</a>
+	  </p>
+	  <p>Se você não sabe exatamente o que baixar,
+	    <a href="http://www.pygame.org/install.html" target="_blank"> Leia o manual de instalação </a>
+	   </p>
+	   <p> Repositório oficial: <a href="https://bitbucket.org/pygame/pygame">https://bitbucket.org/pygame/pygame</a></p>
+		
+	  </div>
+	  <h3> Windows </h3>
+	  <p >Pegue a versão do Pygame correspondente a sua versão do python.Talvez você tenha que desinstalar versões anteriores
+		    do pygame.
+		</p>
+		<div class="ui list">
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/windows_logo.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <div class="description">
+			            <a class="item" href="http://pygame.org/ftp/pygame-1.9.1.win32-py2.7.msi" target="_self">
+			            	pygame-1.9.1.win32-py2.7.msi 3.1MB
+			        	</a>
+		            </div>
+		            <div class="description">
+			            <a class="item" href="http://pygame.org/ftp/pygame-1.9.1release.win32-py2.4.exe" target="_self">
+				            pygame-1.9.1release.win32-py2.4.exe 3MB
+				        </a>
+		            </div>
+		            <div class="description">
+			            <a class="item" href="http://pygame.org/ftp/pygame-1.9.1release.win32-py2.5.exe" target="_self">
+				            pygame-1.9.1release.win32-py2.5.exe 3MB
+				        </a>
+		            </div>
+		            <div class="description">
+			             <a class="item" href="http://pygame.org/ftp/pygame-1.9.1.win32-py2.5.msi" target="_self">
+				            pygame-1.9.1.win32-py2.5.msi 3MB
+				        </a>
+		            </div>
+		            <div class="description">
+			              <a class="item" href="http://pygame.org/ftp/pygame-1.9.1.win32-py2.6.msi" target="_self">
+				            pygame-1.9.1.win32-py2.6.msi 3MB
+				        </a>
+		            </div>
+		             <div class="description">
+			             <a class="item" href="http://pygame.org/ftp/pygame-1.9.2a0.win32-py2.7.msi" target="_self">
+				            pygame-1.9.2a0.win32-py2.7.msi 6.4MB
+				        </a>
+		            </div>
+		            <div class="description">
+			             <a class="item" href="http://pygame.org/ftp/pygame-1.9.1.win32-py3.1.msi" target="_self">
+				            pygame-1.9.1.win32-py3.1.msi 3MB
+				        </a>
+		            </div>
+		             <div class="description">
+			            <a class="item" href="http://pygame.org/ftp/pygame-1.9.2a0.win32-py3.2.msi" target="_self">
+				            pygame-1.9.2a0.win32-py3.2.msi 6.4MB
+				        </a>
+		            </div>
+		             <div class="description">
+			            <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame" target="_self">Windows 64 bits</a>
+		            </div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+	  </div>
+	  <div class="ui vertical segment">
+	    <h3 >Distribuições Unix</h3>
+	    <div class="ui list">
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/ubuntu_icon.jpg">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Ubuntu</p>
+		            <div class="description">O pygame está disponível via apt-get in the Universe (1.9.1)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/fedora_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Fedora</p>
+		            <div class="description">Os repositórios de pacotes possuem suporte ao pygame (1.9.1)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/gentoo_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Gentoo</p>
+		            <div class="description">O pygame está disponível no the portage system (1.9.1 + 1.9.2 pre-release)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/suse_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Suse</p>
+		            <div class="description">O sistema de pacotes Yast possui o pygame (updated to 1.9.1)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/olpc_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">OLPC</p>
+		            <div class="description">Vem com o XO, e com o sugar (1.9.1)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/arch_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Arch  Linux</p>
+		            <div class="description">O pygame está disponível através do pacman (1.9.1)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/debian_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Debian</p>
+		            <div class="description">O pygame está disponível via apt-get (1.9.1)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/free_bsd_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Free BSD</p>
+		            <div class="description">O pygame está incluso nas portas padrão como py26-game (1.8.1)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/open_bsd_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">OpenBSD</p>
+		            <div class="description">O pygame está incluso nas portas padrão (1.8.1)</div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="ui vertical segment">
+	    <h3 >Outros</h3>
+	    <div class="ui list">
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/mac_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Macintosh</p>
+		            <div class="description">
+		            	<a class="item" href="http://pygame.org/ftp/pygame-1.9.1release-python.org-32bit-py2.7-macosx10.3.dmg" target="_self">pygame-1.9.1release-python.org-32bit-py2.7-macosx10.3.dmg 12MB</a>
+		            </div>
+		            <div class="description">
+		            	 <a class="item" href="http://pygame.org/ftp/pygame-1.9.1release-py2.6-macosx10.5.zip" target="_self">pygame-1.9.1release-py2.6-macosx10.5.zip 10.3MB
+        	             </a>
+		            </div>
+		            <div class="description">
+		            	 <a class="item" href="http://pygame.org/ftp/pygame-1.9.1release-py2.5-macosx10.5.zip" target="_self">pygame-1.9.1release-py2.5-macosx10.5.zip 10.3MB
+                          </a>
+		            </div>
+		            <div class="description">
+		            	 <a class="item" href="http://pygame.org/ftp/pygame-1.9.1release-py2.4-macosx10.5.zip" target="_self">pygame-1.9.1release-py2.4-macosx10.5.zip 10.3MB
+                         </a>
+		            </div>
+		            <div class="description">
+		            	 <a class="item" href="http://www.finkproject.org/" target="_blank">fink - 1.7.1release is available. (no bug submitted yet for 1.9.1 update)
+                         </a>
+		            </div>
+		            <div class="description">
+		            	  <a class="item" href="https://bitbucket.org/pygame/pygame/issue/82/homebrew-on-leopard-fails-to-install#comment-627494" target="_blank">Instalações manuais (Em inglês)
+                          </a>
+		            </div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/android_icon.jpg">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Android</p>
+		            <div class="description">
+		           	 <a class="item" href="http://pygame.renpy.org/" target="_self">Pygame para Android</a>
+		            </div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		<div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/beos_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Be OS</p>
+		            <div class="description">
+		           	  <a class="item" href="http://www.bebits.com/app/3833" target="_self">Bebits - Última versão de release 1.6</a>
+		            </div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="item">
+		    <img class="ui top aligned avatar image" src="/static/img/nokia_icon.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Nokia</p>
+		            <div class="description">
+		           	   <a class="item" href="http://www.pygame.org/ftp/pygame-S60-1.9.0_pyS60-1.9.7_SVN-2559_20090805_GCCE-UREL.sisx" target="_self">nokia pys60 - pygame-S60-1.9.0_pyS60-1.9.7_SVN-2559_20090805_GCCE-UREL.sisx</a>
+		            </div>
+		            <div class="description">
+		           	   <a class="item" href="http://maemo.org/packages/view/python-pygame/" target="_self">Maemo - Última versão de release 1.8.1 - no package manager.</a>
+		            </div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="ui vertical segment">
+	   <div class="ui list">
+		   <div class="item">
+		    <img class="ui top aligned avatar image" src="static/img/game.png">
+		    <div class="content"></div>
+		      <div class="list">
+		        <div class="item">
+		          <div class="content">
+		            <p class="header">Versões anteriores</p>
+		            <div class="description">
+		           	  <a class="item" href="http://pygame.org/ftp/pygame-1.9.0release.tar.gz" target="_self">
+			            pygame-1.9.0release.tar.gz ~ 1.4M - August 1, 2009
+			        </a>
+		            </div>
+		            <div class="description">
+		           	    <a class="item" href="http://pygame.org/ftp/pygame-1.8.1release.tar.gz" target="_self">
+				            pygame-1.8.1release.tar.gz ~ 1.4M - July 30, 2008
+				        </a>
+		            </div>
+		            <div class="description">
+		           	    <a class="item" href="http://www.pygame.org/ftp/pygame-1.8.0release.tar.gz" target="_self">
+				            pygame-1.8.0release.tar.gz ~ 1.4M - March 29, 2008
+				        </a>
+		            </div>
+		            <div class="description">
+		           	    <a class="item" href="http://www.pygame.org/ftp/pygame-1.7.1release.tar.gz" target="_self">
+				            pygame-1.7.1release.tar.gz ~ 1.3M - August 16, 2005
+				        </a>
+		            </div>
+		            <div class="description">
+		           	    <a class="item" href="http://pygame.org/ftp/pygame-1.6.tar.gz" target="_self">
+				            pygame-1.6.tar.bz2 ~ 1140 kb -
+				        </a>
+		            </div>
+		             <div class="description">
+		           	    <a class="item" href="http://pygame.org/ftp/old/pygame-1.5.tar.gz" target="_self">
+				            pygame-1.5.tar.gz ~ 832 kb - October 23, 2003
+				        </a>
+		            </div>
+		            <div class="description">
+		           	    <a class="item" href="http://pygame.org/ftp/old/pygame-1.4.tar.gz" target="_self">
+				            pygame-1.4.tar.gz ~ 808 kb - Jan 30, 2002
+				        </a>
+		            </div>
+		            <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-1.3.tar.gz" target="_self">
+				            pygame-1.3.tar.gz ~ 731 kb - Dec 19, 2001
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-1.2.tar.gz" target="_self">
+				            pygame-1.2.tar.gz ~ 708 kb - Sep 4, 2001
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-1.1.tar.gz" target="_self">
+				            pygame-1.1.tar.gz ~ 644 kb - Jun 23, 2001
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-1.0.tar.gz" target="_self">
+				            pygame-1.0.tar.gz ~ 564 kb - Apr 5, 2001
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-0.9.tar.gz" target="_self">
+				            pygame-0.9.tar.gz ~ 452 kb - Feb 13, 2001
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-0.5.tar.gz" target="_self">
+				            pygame-0.5.tar.gz ~ 436 kb - Jan 6 14, 2001
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-0.4.tar.gz" target="_self">
+				            pygame-0.4.tar.gz ~ 420 kb - Dec 14, 2000
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-0.3b.tar.gz" target="_self">
+				            pygame-0.3b.tar.gz ~ 367 kb - Nov 20, 2000
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-0.2b.tar.gz" target="_self">
+				            pygame-0.2b.tar.gz ~ 408 kb - Nov 3, 2000
+				        </a>
+				    </div>
+				    <div class="description">
+				        <a class="item" href="http://pygame.org/ftp/old/pygame-0.1a.tar.gz" target="_self">
+				            pygame-0.1a.tar.gz ~ 300 kb - Oct 28, 2000
+				        </a>
+				    </div>
+		          </div>
+		      </div>
+		    </div>
+		  </div>
+		 </div>
+	  </div>
+	</div>
 {% endblock %}
 	</body>
 </html>p
