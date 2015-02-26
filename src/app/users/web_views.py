@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from flask import Blueprint, render_template, redirect, request, session
+from flask import Blueprint, render_template, redirect, request
 from flask_login import current_user, login_user
 import usecase
 
@@ -34,6 +34,7 @@ def signup():
         return redirect('/admin')
     return redirect('/login')
 
+
 @web_views.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
@@ -53,7 +54,5 @@ def login():
 
 @web_views.route("/logout", methods=["GET"])
 def logout():
-    #logout_user()
+    # logout_user()
     return redirect('/')
-
-

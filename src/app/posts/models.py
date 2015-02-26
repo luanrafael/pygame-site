@@ -13,7 +13,8 @@ class Post(db.Model):
     author = db.Column(db.Unicode(80))
     content = db.Column(db.UnicodeText())
     title = db.Column(db.Unicode(80))
-    date = db.Column(db.DateTime(), onupdate=datetime.datetime.now(), default=datetime.datetime.now)
+    date = db.Column(
+        db.DateTime(), onupdate=datetime.datetime.now(), default=datetime.datetime.now)
     categorie = db.Column(db.Unicode(80))
 
     def __init__(self, author, content, title, categorie):
@@ -39,14 +40,14 @@ class Post(db.Model):
     @classmethod
     def save(cls, post):
         # TODO: nao deveria
-    	# ser classmethod
+        # ser classmethod
         cls.session.add(post)
         cls.make_commit()
 
     @classmethod
     def delete(cls, id):
         # TODO: nao deveria
-    	# ser classmethod
+        # ser classmethod
         cls.session.query(cls).filter(cls.id == id).delete()
         cls.make_commit()
 

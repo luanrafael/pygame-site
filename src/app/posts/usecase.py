@@ -2,8 +2,9 @@
 
 from models import Post
 
+
 def count_posts():
-	return Post.count()
+    return Post.count()
 
 
 def get_posts(begin):
@@ -11,11 +12,11 @@ def get_posts(begin):
 
 
 def delete_all_posts():
-	  """This is a slow operation  if you have
-	  many posts
-	  """
-	  for post in Post.get_all():
-	  	delete_post(post.id)
+    """This is a slow operation  if you have
+    many posts
+    """
+    for post in Post.get_all():
+        delete_post(post.id)
 
 
 def delete_post(id):

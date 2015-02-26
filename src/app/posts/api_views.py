@@ -18,14 +18,14 @@ def add():
 
 @posts_api.route("/get", methods=["GET"])
 def get():
-	request_dict = utils.parse_from_query_string(request.query_string)
+    request_dict = utils.parse_from_query_string(request.query_string)
 
-	begin = int(request_dict["begin"])
+    begin = int(request_dict["begin"])
 
-	posts = usecase.get_posts(begin)
+    posts = usecase.get_posts(begin)
 
-	data = [post.to_dict() for post in posts]
-	return jsonify(data=data)
+    data = [post.to_dict() for post in posts]
+    return jsonify(data=data)
 
 
 @posts_api.route("/delete", methods=["POST"])
@@ -48,7 +48,8 @@ def edit():
         return response
     return jsonify(data=edited_post.to_dict())
 
+
 @posts_api.route("/count", methods=["GET"])
 def count():
-	quantity = usecase.count_posts()
-	return jsonify(data={"quantity": quantity})
+    quantity = usecase.count_posts()
+    return jsonify(data={"quantity": quantity})
