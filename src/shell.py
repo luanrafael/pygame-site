@@ -2,10 +2,10 @@
 # coding: utf-8
 
 import os
-import readline
-from pprint import pprint
+import readline  # noqa
+from pprint import pprint  # noqa
 
-from flask import *
-from app import *
+from flask import *  # noqa
+from app import *  # noqa
 
 os.environ['PYTHONINSPECT'] = 'True'

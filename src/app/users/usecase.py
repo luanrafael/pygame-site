@@ -28,6 +28,7 @@ def check_user_credentials(login, password):
             return user
     return None
 
+
 def get_users():
     return User.get_users() or []
 

@@ -19,7 +19,6 @@ class User(db.Model):
     gender = db.Column(db.String(20))
     is_authenticated = db.Column(db.Boolean, default=False)
 
-
     def __init__(self, name, login, password, gender, is_admin=False):
         self.name = name
         self.login = login

@@ -6,14 +6,14 @@ from flask_login import LoginManager
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-login_manager  = LoginManager(app=app)
+login_manager = LoginManager(app=app)
 app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
-########################e
+# e
 # Configure Secret Key #
-########################
+#
 
 
 def install_secret_key(app, filename='secret_key'):
@@ -53,9 +53,11 @@ from posts import web_views as post_web_views
 from contents import api_views as contents_views
 from contents import web_views as contents_web_views
 from users import usecase as user_usecase
+from flaskbb.forum import views
 
 # create all tables
 db.create_all()
+
 
 @login_manager.user_loader
 def load_user(login):
@@ -68,3 +70,4 @@ app.register_blueprint(post_views.posts_api)
 app.register_blueprint(post_web_views.web_views)
 app.register_blueprint(contents_views.contents_api)
 app.register_blueprint(contents_web_views.web_views)
+app.register_blueprint(views.forum)
