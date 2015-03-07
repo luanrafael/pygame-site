@@ -1,9 +1,0 @@
-language: python
-python:
-        - "2.7"
-before_install:
-        sudo apt-get update && sudo apt-get install python-dev
-install:
-        pip install -r FlaskApp/requirements.txt --upgrade
-scripts:
-		echo teste
