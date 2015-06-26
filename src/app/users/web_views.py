@@ -10,7 +10,8 @@ web_views = Blueprint('user_web_views', __name__, template_folder='templates')
 @web_views.route('/admin')
 def admin():
     values = {}
-    if not current_user.is_authenticated:
+
+    if not current_user.is_authenticated or getattr(current_user, "name", None) is None:
         return redirect('/login')
 
     values["user"] = current_user.name

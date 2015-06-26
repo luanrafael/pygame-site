@@ -53,7 +53,6 @@ from posts import web_views as post_web_views
 from contents import api_views as contents_views
 from contents import web_views as contents_web_views
 from users import usecase as user_usecase
-from flaskbb.forum import views
 
 # create all tables
 db.create_all()
@@ -70,4 +69,3 @@ app.register_blueprint(post_views.posts_api)
 app.register_blueprint(post_web_views.web_views)
 app.register_blueprint(contents_views.contents_api)
 app.register_blueprint(contents_web_views.web_views)
-app.register_blueprint(views.forum)

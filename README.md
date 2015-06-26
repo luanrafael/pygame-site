@@ -10,7 +10,8 @@ pygame-site
 	source venv/bin/activate
 
 # Install  requirements
-
+	[apt-get] install libmysqlclient-dev python-dev (on ubuntu)
+	[yum] install  mysql-devel python-devel (fedora)
 	pip install -r requirements.txt
 
 # Running
