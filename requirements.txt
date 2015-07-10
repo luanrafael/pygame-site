@@ -3,4 +3,3 @@ flask-sqlalchemy
 mysql-python
 flask-login
 flake8==2.1.0
-git+http://github.com/sh4nks/flaskbb.git#egg=flaskbb
