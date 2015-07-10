@@ -5,7 +5,7 @@ _basedir = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 
-ADMINS = frozenset(['youremail@yourdomain.com'])
+ADMINS = frozenset([''])
 SECRET_KEY = 'This string will be replaced with a proper key in production.'
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(_basedir, 'app.db')

@@ -21,3 +21,7 @@
 .form-control{
 	margin-bottom: 15px;
 }
+
+.required {
+	border-color: #e74c3c;
+}

@@ -11,11 +11,6 @@ app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
-# e
-# Configure Secret Key #
-#
-
-
 def install_secret_key(app, filename='secret_key'):
     """Configure the SECRET_KEY from a file
     in the instance directory.
@@ -45,7 +40,6 @@ PROJECT_PATH = os.path.sep.join(
 if PROJECT_PATH not in sys.path:
     sys.path.append(PROJECT_PATH)
 
-
 from users import api_views as user_views
 from users import web_views as user_web_views
 from posts import api_views as post_views
@@ -53,10 +47,9 @@ from posts import web_views as post_web_views
 from contents import api_views as contents_views
 from contents import web_views as contents_web_views
 from users import usecase as user_usecase
+from users.usecase import add_user
 
-# create all tables
 db.create_all()
-
 
 @login_manager.user_loader
 def load_user(login):

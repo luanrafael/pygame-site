@@ -5,6 +5,7 @@ angular.module("app").controller('adminCtrl', ['$scope', 'posts_rest_api', 'cont
         $scope.show_success_post_message = false;
         $scope.show_error_post_message = false;
         $scope.actions = ['newPost', 'managePosts', 'manageDownloads'];
+        $scope.validate = {};
         $scope.posts = [];
 
         $scope.data = {};
@@ -13,6 +14,7 @@ angular.module("app").controller('adminCtrl', ['$scope', 'posts_rest_api', 'cont
         };
 
         $scope.data.selection = $scope.actions[0];
+        $scope.data.categorie = 'Pygame'
         $scope.data.isEditing = false;
         $scope.data.actual_id = null;
         $scope.$watch('data.selection', function(){
@@ -54,6 +56,8 @@ angular.module("app").controller('adminCtrl', ['$scope', 'posts_rest_api', 'cont
         };
 
         $scope.addPost = function(editing){
+          if (!_validate)
+            return;
             var data = {
                 author: g_user,
                 content: $scope.data.content,
@@ -83,6 +87,13 @@ angular.module("app").controller('adminCtrl', ['$scope', 'posts_rest_api', 'cont
         var _transform_to_date = function(list){
             for (var item =  0; item < list.length; item++)
                 list[item].date = new Date(Date.parse(list[item].date));
+        };
+
+        var _validate = function(){
+          if ($scope.data.title.length == 0){
+            $scope.validate.title_required = true;
+            return false;
+          }
         };
 
         var _clear_fields = function(){

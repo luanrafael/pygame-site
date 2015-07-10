@@ -56,6 +56,7 @@ class User(db.Model):
     def save_user(cls, user):
         cls.session.add(user)
         cls.session.commit()
+        cls.session.flush()
         return user
 
     @classmethod
