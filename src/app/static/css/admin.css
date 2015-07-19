@@ -1,0 +1,27 @@
+.col-lg-10{
+	margin-left: -75px;
+	margin-top: -62px;
+}
+
+.form-control.last{
+    margin-left: -75px;
+}
+.select{
+	position: absolute;
+	top: 48px;
+	right: -182px;
+}
+.label{
+	right: -100px;
+	top: 44px;
+	position: absolute;
+	color: #222222;
+	font-size: 18px;
+}
+.form-control{
+	margin-bottom: 15px;
+}
+
+.required {
+	border-color: #e74c3c;
+}

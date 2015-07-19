@@ -1,0 +1,19 @@
+<div class="ui stacked segment post">
+  <a class="story-img" href>
+    <img ng-src="{[postOptions.imageUrl]}" style="width:100px;height:100px" class="img-circle">
+  </a>
+  <div class="title">
+    <h3>{[postOptions.title]}</h3>
+  </div>
+  <div class="content">
+    <p ng-show="!entirePost" ng-bind-html="postOptions.content | sliceContent">
+    </p>
+    <p ng-show="entirePost" ng-bind-html="postOptions.content">
+    </p>
+      <div class="post-date">
+        <p>postado por {[postOptions.author]} em {[postOptions.date | date]}</p>
+      </div>
+    </ul>
+  </div>
+  <br><br>
+</div>

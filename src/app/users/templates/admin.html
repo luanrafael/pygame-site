@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block head %}
+  {{super()}}
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <link href="/static/css/lib/bootstrap_admin.css" rel="stylesheet">
+  <link href="/static/css/admin.css" rel="stylesheet">
+  <script type="text/javascript" src="/static/js/src/services/posts_rest_api.js"></script>
+  <script type="text/javascript" src="/static/js/src/services/content_rest_api.js"></script>
+  <script type="text/javascript" src="/static/js/src/controllers/admin_controller.js"></script>
+  <script type="text/javascript">
+      var g_user = '{{values["user"]}}';
+  </script>
+
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block main %}
+<div id="wrapper" ng-controller="adminCtrl">
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Pygame Admin</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <li ng-click="changePostAction('newPost')">
+              <a href="#"><i class="fa fa-dashboard"></i> Novo post
+              </a>
+            </li>
+            <li ng-click="changePostAction('managePosts')">
+              <a href="#"><i class="fa fa-dashboard"></i> Gerenciar posts</a>
+            </li>
+            <li ng-click="changePostAction('manageDownloads')">
+              <a href="#"><i class="fa fa-dashboard"></i> Editar página de downloads</a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+              <a href="/logout" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Sair</a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+      <div id="page-wrapper" ng-switch on="data.selection" >
+
+        <!-- new post -->
+        <div class="row row-post"  ng-switch-when="newPost">
+          <div class="col-lg-10">
+            <input type="text" class="form-control" placeholder="Titulo" ng-model="data.title"
+              ng-class='{"required": validate.title_required}'>
+            <textarea ckeditor="data.configEditor" ng-model="data.content"></textarea>
+            <div class="right">
+            <button type="button" class="btn btn-primary" ng-hide="data.isEditing" ng-click="addPost()">Salvar post</button>
+            <button type="button" class="btn btn-primary" ng-show="data.isEditing" ng-click="addPost(true)">Salvar post</button>
+            </div>
+            <p ng-show="show_success_post_message">
+              <strong>Seu post foi salvo!</strong> para visualiza-lo <a href="/" class="alert-link">clique aqui</a>.
+            </p>
+            <p ng-show="show_error_post_message">
+              <strong>Oops!</strong> Algo deu errado.Tente novamente
+            </p>
+            <p ng-show="show_success_edit_message">
+              <strong>Seu post foi editado!</strong> para visualiza-lo <a href="/" class="alert-link">clique aqui</a>.
+            </p>
+            <label class="label">Categorias: </label>
+            <select  class="select" ng-model="data.categorie">
+              <option value="Pygame" selected="selected">Pygame</option>
+              <option value="PyJ2D">PyJ2D</option>
+              <option value="PySDL">PySDL</option>
+            </select>
+          </div>
+        </div> <!-- new post end -->
+      <!-- manage posts -->
+        <div class="row row-post" ng-switch-when="managePosts">
+          <div class="col-lg-10">
+            <ul class="list-group" ng-repeat="post in posts | orderBy:post.date">
+              <li class="list-group-item">
+                <span class="left badge">{[post.author]}</span>
+                {[post.title]}
+                <strong class="right">publicado em : {[post.date | date]}</strong>
+                <button type="button" class="btn btn-info btn-sm right" ng-click="editPost(post)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button type="button" class="btn btn-danger btn-sm right" ng-click="deletePost(post.id, $index)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+              </li>
+
+            </ul>
+
+          </div>
+        </div><!-- manage post end -->
+        <!-- manage downloads -->
+        <div class="row row-post"  ng-switch-when="manageDownloads">
+          <div class="col-lg-12">
+          <textarea ckeditor="data.configEditor" ng-model="data.downloadContent"></textarea>
+            <div class="right">
+            <button type="button" class="btn btn-primary" ng-hide="data.isEditing" ng-click="addContent(data.downloadContent)">Salvar conteúdo</button>
+            </div>
+          </div>
+        </div> <!-- manage downloads end -->
+      </div>
+
+    </div><!-- /#page-wrapper -->
+  </div><!-- /#wrapper -->
+{% endblock %}
+  </body>
+</html>
